@@ -8,7 +8,7 @@ namespace WorkwithArrays
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //// 1.  + Delete all even numbers.
             ////2.  + Insert new element after all elements beginning with the indicated digit. 
@@ -37,7 +37,7 @@ namespace WorkwithArrays
             //----------------------------------------------------------------------------
             //TestClass2.InsertNewLine();
             ////----------------------------------------------------------------------------
-            //TestClass2.InsertNewColumn();
+            TestClass2.InsertNewColumn();
             //////----------------------------------------------------------------------------
             //TestClass2.DeleteLinesWithEven();
             ////----------------------------------------------------------------------------
@@ -47,10 +47,34 @@ namespace WorkwithArrays
             ////----------------------------------------------------------------------------
             //TestClass2.Compress();
 
+            //--------------------------------------------------------------------------------
+            //--------------------------------------------------------------------------------
+            var stringReader = new ConsoleStringReader();
+            var stringProcessor = new StringProcessor();
+            var processor = new TestStringProcessor(stringReader, stringProcessor);
+
+            // processor.CountDifferent();
+            //processor.CountFull();
+            //processor.CountSumOfDigits();
+            //processor.CountSumOfNumbers();  
+            //processor.DeleteFromCurlyBraces();  
+            //processor.DeleteFromParanthesize();  
+            //processor.DeleteMiddle();
+            //processor.DeleteSustr(); 
+            //processor.DeleteX();
+            //processor.DisplayCharsA();
+            //processor.DisplayCharsB();
+            //processor.DisplayStatstics();
+            //processor.DoubleX();
+            //processor.FirstAndLast();
+            //processor.Hasadjacentcaracters();
+            //processor.InsertXafterEachY();
+            //processor.MixUp();  
+            //processor.MoreOften();  
+            //processor.ReplaceAdjacentDotsWith();
+            //processor.ReplaceSubstr1WithSubstr2(); 
+
             Console.ReadLine();
-
-
-
         }
     }
 }

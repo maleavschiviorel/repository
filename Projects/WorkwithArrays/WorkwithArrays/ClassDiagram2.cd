@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WorkwithArrays.ArrOfInt" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ArrOfInt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkwithArrays.Class1" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAgAAAAAAAAAmQEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkwithArrays.Class2" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAABAABgAAggAAAAAAAAAAACAAAAEAAAAAAAA=</HashCode>
+      <FileName>Class2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkwithArrays.StringProcessor" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StringProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WorkwithArrays.MatrixOfInt" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MatrixOfInt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkwithArrays.MyList&lt;T&gt;" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAACAAAAABAgAAAAIgACAAAAABAAAA=</HashCode>
+      <FileName>MyList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkwithArrays.MyMatrix&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAgACEAQACgAAAABAgAAAAIgACAAAAABAAAA=</HashCode>
+      <FileName>MyMatrix.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkwithArrays.Program" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkwithArrays.TestClass1" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAABAQAAAAAAAAAIAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>TestClass1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkwithArrays.TestClass2" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAABAAAgAAgAAAAIAAAAAAACAAAAEAAAAAAAA=</HashCode>
+      <FileName>TestClass2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

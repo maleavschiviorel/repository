@@ -27,29 +27,53 @@ namespace WorkwithArrays
     //19.	delete all characters inside the curly braces; 
     //20.	count and display statistics of character occurrences in the string. 
 
-    class Class3
+    public class StringProcessor : IStringProcessor
     {
+
         /// <summary>
-        /// insert character<x> after every occurrence of character<y>
+        /// 1. insert character<x> after every occurrence of character<y>
         /// </summary>
         /// <returns></returns>
-        public static string InsertXafterEachY(string str, char tofind, char toadd)
+        public string InsertXafterEachY(string str, char tofind, char toadd)
         {
+            if (str == null)
+                return "";
             return str.Replace(tofind.ToString(), tofind.ToString() + toadd.ToString());
         }
 
+        //2.	mix up the first character with the second one, the third character with the fourth one etc. 
+        public string MixUp(string str)
+        {
+            if (str == null)
+                return "";
+            StringBuilder result = new StringBuilder();
+
+            for (int i = 0; i < str.Length; i += 2)
+            {
+                if (i + 1 <= str.Length - 1)
+                    result.Append(new char[] { str[i + 1], str[i] });
+                else
+                    result.Append(str[i]);
+
+            }
+            return result.ToString();
+        }
+
+
         /// <summary>
-        /// find, which of two indicated characters is occurred in the string more often; 
+        /// 3. find, which of two indicated characters is occurred in the string more often; 
         /// </summary>
         /// <param name="str"></param>
         /// <param name="tofind"></param>
         /// <param name="toadd"></param>
         /// <returns></returns>
-        public static int MoreOften(string str, char c1, char c2)
+        public int MoreOften(string str, char c1, char c2)
         {
-            if (str.Length - str.Replace(c1.ToString(), "").Length < str.Length - str.Replace(c2.ToString(), "").Length)
+            if (str == null)
+                return -1;
+            if (str.Replace(c1.ToString(), "").Length < str.Replace(c2.ToString(), "").Length)
                 return 0;
-            else if (str.Length - str.Replace(c1.ToString(), "").Length > str.Length - str.Replace(c2.ToString(), "").Length)
+            else if (str.Replace(c1.ToString(), "").Length > str.Replace(c2.ToString(), "").Length)
                 return 1;
             else
                 return -1;
@@ -63,18 +87,24 @@ namespace WorkwithArrays
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static int CountFull(string str, char x, char y)
+        public int CountFull(string str, char x, char y)
         {
+            if (str == null)
+                return 0;
             return str.Length - str.Replace(x.ToString(), "").Length + str.Length - str.Replace(y.ToString(), "").Length;
         }
+
+
         /// <summary>
-        /// +count number of different characters in the string; 
+        /// 5. count number of different characters in the string; 
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static int CountDifferent(string str)
+        public int CountDifferent(string str)
         {
             string strb = "";
+            if (str == null)
+                return 0;
             for (int i = 0; i < str.Length; i++)
             {
                 if (strb.IndexOf(str[i]) == -1)
@@ -90,9 +120,11 @@ namespace WorkwithArrays
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static bool Hasadjacentcaracters(string str)
+        public bool Hasadjacentcaracters(string str)
         {
             int index = -1;
+            if (str == null)
+                return false;
             for (int i = 0; i < str.Length - 1; i++)
             {
                 index = str.IndexOf(str[i], i + 1);
@@ -106,9 +138,11 @@ namespace WorkwithArrays
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static string DeleteMiddle(string str)
+        public string DeleteMiddle(string str)
         {
             int index = -1;
+            if (str == null)
+                return "";
             if (str.Length > 0)
             {
                 if (str.Length % 2 == 0)
@@ -129,8 +163,10 @@ namespace WorkwithArrays
         /// <param name="str"></param>
         /// <param name="x"></param>
         /// <returns></returns>
-        public static string DoubleX(string str, char x)
+        public string DoubleX(string str, char x)
         {
+            if (str == null)
+                return "";
             return str.Replace(x.ToString(), x.ToString() + x.ToString());
         }
         /// <summary>
@@ -139,8 +175,10 @@ namespace WorkwithArrays
         /// <param name="str"></param>
         /// <param name="x"></param>
         /// <returns></returns>
-        public static string DeleteX(string str, char x)
+        public string DeleteX(string str, char x)
         {
+            if (str == null)
+                return "";
             return str.Replace(x.ToString(), "");
         }
 
@@ -150,8 +188,10 @@ namespace WorkwithArrays
         /// <param name="str"></param>
         /// <param name="substr"></param>
         /// <returns></returns>
-        public static string DeleteSustr(string str, string substr)
+        public string DeleteSustr(string str, string substr)
         {
+            if (str == null)
+                return "";
             return str.Replace(substr, "");
         }
 
@@ -162,8 +202,10 @@ namespace WorkwithArrays
         /// <param name="substr1"></param>
         /// <param name="substr2"></param>
         /// <returns></returns>
-        public static string ReplaceSubstr1WithSubstr2(string str, string substr1, string substr2)
+        public string ReplaceSubstr1WithSubstr2(string str, string substr1, string substr2)
         {
+            if (str == null)
+                return "";
             return str.Replace(substr1, substr2);
         }
         /// <summary>
@@ -171,9 +213,11 @@ namespace WorkwithArrays
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        public static double CountSumOfNumbers(string str)
+        public double CountSumOfNumbers(string str)
         {
             double t = 0;
+            if (str == null)
+                return 0;
             for (int i = 0; i < str.Length; i++)
                 if (!char.IsNumber(str[i]))
                 {
@@ -194,9 +238,11 @@ namespace WorkwithArrays
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static long CountSumOfDigits(string str)
+        public long CountSumOfDigits(string str)
         {
             long t = 0;
+            if (str == null)
+                return 0;
             for (int i = 0; i < str.Length; i++)
                 if (char.IsNumber(str[i]))
                 {
@@ -212,8 +258,10 @@ namespace WorkwithArrays
         /// <param name="x"></param>
         /// <param name="f"></param>
         /// <param name="l"></param>
-        public static void FirstAndLast(string str, char x, out int f, out int l)
+        public void FirstAndLast(string str, char x, out int f, out int l)
         {
+            if (str == null)
+                str = "";
             f = str.IndexOf(x);
             l = str.LastIndexOf(x);
         }
@@ -223,32 +271,138 @@ namespace WorkwithArrays
         /// <param name="str"></param>
         /// <param name="substr"></param>
         /// <returns></returns>
-        public static string ReplaceAdjacentDotsWith(string str, string substr)
+        public string ReplaceAdjacentDotsWith(string str, string substr)
         {
             int l = -1;
             int r = -1;
-
-            for (int i = 0; i < str.Length - 1; i++)
+            if (str == null)
+                return "";
+            StringBuilder stb = new StringBuilder();
+            for (int i = 0; i < str.Length; i++)
             {
-                l = str.IndexOf(".", i);
-                if (l > -1 && l < str.Length - 2)
+                if (str[i] == '.')
                 {
-                    r = str.IndexOf(".", l + 1);
-                    string str1 = str.Substring(l, r - l);
-                    if (str1.Replace(".", "") == "")
+                    l = i;
+                    r = i;
+                    for (; r < str.Length - 1 && str[r] == '.'; r++)
+                        ;
+                    if (r - l > 1)
                     {
-                        str = str.Replace(str1, substr);
-                        i = l + substr.Length - 1;
+                        stb.Append("...");
+                        i = r - 1;
+                        continue;
                     }
+                }
+                stb.Append(str[i]);
+            }
+            return stb.ToString();
+        }
+
+        /// <summary>
+        /// 16.	display all characters before the first colon occurrence in the string; 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string DisplayCharsB(string str)
+        {
+            if (str == null)
+                return "";
+            if (str.Length > 0 && str.IndexOf(":") != -1)
+            {
+                return str.Substring(0, str.IndexOf(":"));
+            }
+            else
+                return "";
+        }
+
+        /// <summary>
+        /// 17.	display all characters after the first colon occurrence in the string; 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string DisplayCharsA(string str)
+        {
+            if (str == null)
+                return "";
+
+            int i = str.IndexOf(":");
+
+
+            if (str.Length > 0 && i != -1 && i < str.Length - 1)
+            {
+                return str.Substring(i + 1, str.Length - 1 - i);
+            }
+            else
+                return "";
+
+        }
+        private string DeleteFrom(string str, char c1, char c2)
+        {
+            if (str == null)
+                return "";
+            int l = -1;
+            int r = -1;
+            l = str.IndexOf(c1);
+            r = str.LastIndexOf(c2);
+            if (l > -1 && r > l)
+            {
+                return str.Substring(0, l + 1) + str.Substring(r, str.Length - r);
+            }
+            else
+                return str;
+        }
+
+
+        /// <summary>
+        /// 18.	delete all characters inside the parenthesize. 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string DeleteFromParanthesize(string str)
+        {
+            if (str == null)
+                return "";
+            return DeleteFrom(str, '(', ')');
+        }
+
+        /// <summary>
+        /// 19.	delete all characters inside the curly braces; 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string DeleteFromCurlyBraces(string str)
+        {
+            if (str == null)
+                return "";
+            return DeleteFrom(str, '{', '}');
+        }
+
+
+        /// <summary>
+        /// 20.	count and display statistics of character occurrences in the string. 
+        /// </summary>
+        /// <param name="str"></param>
+        public void DisplayStatstics(string str)
+        {
+            if (str == null)
+                str = "";
+            Dictionary<char, int> stat = new Dictionary<char, int>();
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (!stat.ContainsKey(str[i]))
+                {
+                    stat.Add(str[i], 1);
                 }
                 else
                 {
-                    break;
+                    stat[str[i]] = stat[str[i]] + 1;
                 }
             }
-            return str;
+            foreach (char c in stat.Keys)
+            {
+                Console.WriteLine("count('{0}')={1}", c, stat[c]);
+            }
         }
-
     }
 
 }

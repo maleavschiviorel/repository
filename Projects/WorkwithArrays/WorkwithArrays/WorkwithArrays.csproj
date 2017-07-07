@@ -45,7 +45,10 @@
     <Compile Include="ArrOfInt.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
-    <Compile Include="Class3.cs" />
+    <Compile Include="StringProcessor.cs" />
+    <Compile Include="ConsoleStringReader.cs" />
+    <Compile Include="IStringProcessor.cs" />
+    <Compile Include="IStringReader.cs" />
     <Compile Include="MatrixOfInt.cs" />
     <Compile Include="MyList.cs" />
     <Compile Include="MyMatrix.cs" />
@@ -53,10 +56,12 @@
     <Compile Include="TestClass1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TestClass2.cs" />
+    <Compile Include="TestStringProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
