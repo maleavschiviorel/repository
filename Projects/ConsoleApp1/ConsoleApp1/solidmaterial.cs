@@ -8,6 +8,8 @@ namespace ConsoleApp1
     public class solidmaterial : material
     {
         static public double addCoef1 = 1;
+
+      
         public double weight
         {
             get;
@@ -18,11 +20,11 @@ namespace ConsoleApp1
            // solidmaterial.addCoef = 3.5;
             Console.WriteLine("Init solidmaterial static constractor ");
         }
-        public solidmaterial(double buyprice) : base(buyprice, buyprice * solidmaterial.addCoef)
+        public solidmaterial(string Name,double buyprice) : base(Name,buyprice, buyprice * solidmaterial.addCoef)
         {
             Console.WriteLine(string.Format("Init solidmaterial with buyprice= {0} and sellprice={1}", buyprice, this.sellprice));
         }
-        public solidmaterial(double buyprice, double sellprice) : base(buyprice, sellprice)
+        public solidmaterial(string Name, double buyprice, double sellprice) : base(Name,buyprice, sellprice)
         {
             Console.WriteLine(string.Format("Init solidmaterial with buyprice= {0} and sellprice={1}", buyprice, this.sellprice));
         }
@@ -34,9 +36,14 @@ namespace ConsoleApp1
                 //throw new Exception("custom buy price is more then default buy price");
                 Console.WriteLine("custom buy price is more then default buy price");
         }
+        public override void Sell(int quantity, double? selprice)
+        {
+            maxsellprice = selprice??this.sellprice;
+            Console.WriteLine("sell solidmaterial quantity =" + quantity.ToString() + " with price " + sellprice.ToString());
+        }
         public override void Sell(int quantity)
         {
-            Console.WriteLine("sell solidmaterial quantity =" + quantity.ToString() + " with price " + sellprice.ToString());
+            Sell(quantity, null);
         }
     }
 

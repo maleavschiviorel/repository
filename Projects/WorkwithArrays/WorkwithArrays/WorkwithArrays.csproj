@@ -50,7 +50,6 @@
     <Compile Include="IStringProcessor.cs" />
     <Compile Include="IStringReader.cs" />
     <Compile Include="MatrixOfInt.cs" />
-    <Compile Include="MyList.cs" />
     <Compile Include="MyMatrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClass1.cs" />
@@ -62,6 +61,12 @@
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyListGeneric\MyListGeneric.csproj">
+      <Project>{18dce392-7fc2-4afb-8ec5-f4e88e0d6ce8}</Project>
+      <Name>MyListGeneric</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

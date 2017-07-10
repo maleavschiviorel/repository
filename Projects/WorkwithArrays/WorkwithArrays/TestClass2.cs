@@ -65,6 +65,8 @@ namespace WorkwithArrays
             //Delete all columns, containing only positive elements. 
             MatrixOfInt mtx = new MatrixOfInt(Class2.EnterMatrix());
 
+            Class2.ShowElements(mtx.GetAsArrayOfArrays());
+
             Console.WriteLine("Delete all columns, containing only positive elements. ");
             mtx = new MatrixOfInt(Class2.DeleteColumnsPositive(mtx.GetAsArrayOfArrays()));
 
@@ -76,7 +78,7 @@ namespace WorkwithArrays
         {
             //Compress array by deleting all only zero-value lines and columns.
             MatrixOfInt mtx = new MatrixOfInt(Class2.EnterMatrix());
-
+            Class2.ShowElements(mtx.GetAsArrayOfArrays());
             Console.WriteLine("Compress array by deleting all only zero-value lines and columns.");
             mtx = new MatrixOfInt(Class2.Compress(mtx.GetAsArrayOfArrays()));
 
@@ -88,7 +90,7 @@ namespace WorkwithArrays
         {
             //Delete from array the k-th line and the j-th column if their values coincide.
             MatrixOfInt mtx = new MatrixOfInt(Class2.EnterMatrix());
-
+            Class2.ShowElements(mtx.GetAsArrayOfArrays());
             Console.WriteLine("Delete from array the k-th line and the j-th column if their values coincide.");
             mtx = new MatrixOfInt(Class2.DeleteLinesColumnsEqual(mtx.GetAsArrayOfArrays()));
 

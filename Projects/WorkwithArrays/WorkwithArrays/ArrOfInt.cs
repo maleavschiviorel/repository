@@ -1,7 +1,10 @@
-﻿namespace WorkwithArrays
+﻿using MyListGeneric;  
+namespace WorkwithArrays
 {
     public class ArrOfInt : MyList<int>
     {
+        public ArrOfInt(MyList<int> arr) : base(arr)
+        { }
         public ArrOfInt(int[] arr) : base(arr)
         { }
         public ArrOfInt() : base()

@@ -13,12 +13,18 @@ namespace ConsoleApp1
             set;
         }
 
-        public liquidmaterial(double buyprice) : base(buyprice, buyprice * 5 * SellKoef)
+        public liquidmaterial(string Name,double buyprice) : base(Name,buyprice, buyprice * 5 * SellKoef)
         {
-            Console.WriteLine(string.Format("Init liquidmaterial with buyprice= {0} and sellprice={1}", buyprice, this.sellprice));
+            Console.WriteLine(string.Format("Init liquidmaterial with buyprice= {0} and sellprice={1}", buyprice, this.Sellprice));
         }
         public override void Sell(int quantity)
         {
+            Console.WriteLine("sell liquidmaterial quantity =" + quantity.ToString() + " with price " + Sellprice.ToString());
+        }
+        public override void Sell(int quantity, double ? sellprice)
+        {
+            if (sellprice.HasValue)
+                maxsellprice  = sellprice; ;
             Console.WriteLine("sell liquidmaterial quantity =" + quantity.ToString() + " with price " + sellprice.ToString());
         }
     }

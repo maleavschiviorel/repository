@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForCompareImplementation.cs" />
     <Compile Include="liquidmaterial.cs" />
     <Compile Include="material.cs" />
     <Compile Include="Program.cs" />
@@ -51,6 +52,13 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WorkwithArrays\MyListGeneric\MyListGeneric.csproj">
+      <Project>{18dce392-7fc2-4afb-8ec5-f4e88e0d6ce8}</Project>
+      <Name>MyListGeneric</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿namespace WorkwithArrays
+﻿using MyListGeneric;
+namespace WorkwithArrays
 {
   
         public class MatrixOfInt : MyMatrix<int>
