@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71AAD6B2-655B-46EF-B710-0EED77D01E56}</ProjectGuid>
+    <ProjectGuid>{D95002C5-D32E-4C1F-80A8-DDDEB98BEED4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp1</RootNamespace>
-    <AssemblyName>ConsoleApp1</AssemblyName>
+    <RootNamespace>ConsoleApp2</RootNamespace>
+    <AssemblyName>ConsoleApp2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,18 +45,21 @@
     <Compile Include="ForCompareImplementation.cs" />
     <Compile Include="liquidmaterial.cs" />
     <Compile Include="material.cs" />
+    <Compile Include="MyExceptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="solidmaterial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WorkwithArrays\MyListGeneric\MyListGeneric.csproj">
-      <Project>{18dce392-7fc2-4afb-8ec5-f4e88e0d6ce8}</Project>
+    <ProjectReference Include="..\Log\Log.csproj">
+      <Project>{91a96888-20c6-45b0-91eb-fc9a68e522e0}</Project>
+      <Name>Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyListGeneric\MyListGeneric.csproj">
+      <Project>{c96a60d6-7faf-4253-8020-bf56b717e6b4}</Project>
       <Name>MyListGeneric</Name>
     </ProjectReference>
   </ItemGroup>

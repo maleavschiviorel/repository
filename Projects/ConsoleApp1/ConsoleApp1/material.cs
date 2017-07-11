@@ -1,24 +1,48 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Log;
+using System.Diagnostics;
 
 namespace ConsoleApp1
 {
-    public abstract class material
+
+    public abstract class material : IComparable
     {
         public enum TypeOfObtain : byte { synthetic = 1, organic, chemical = 5 };
+
+        static public double addCoef = 1;
+
+        private string name = "";
+
+        protected readonly double? buyprice = null;
+        protected double? maxsellprice = null;
+        protected double? sellprice = null;
+        protected Log.Log log = Log.Log.GetTheLog();
+
+        public const double SellKoef = 1.5;
         public TypeOfObtain MaterialIs
         {
             get;
             set;
         }
-        static public double addCoef = 1;
-        public const double SellKoef = 1.5;
-        protected readonly double? buyprice = null;
-        protected double? maxsellprice = null;
-        protected double? sellprice = null;
-        private string name = "";
+        public int CompareTo(object m)
+        {
+            if (m is material)
+            {
+                material m2 = m as material;
+                if (this.Name.CompareTo(m2.Name) == 0 && this.Buyprice.HasValue && m2.Buyprice.HasValue)
+                    return ((double)this.Buyprice).CompareTo((double)m2.Buyprice);
+                else
+                    return this.Name.CompareTo(m2.Name);
+            }
+            else
+            {
+                throw new Exception("not of type material");
+            }
+        }
         public string Name
         {
             get { return name; }
@@ -46,12 +70,12 @@ namespace ConsoleApp1
 
         static material()
         {
-           
+
             addCoef = 2.5;
             Console.WriteLine("Init material static constractor ");
         }
 
-        protected material(string Name,double buyprice)
+        protected material(string Name, double buyprice)
         {
             name = Name;
             this.buyprice = buyprice;
@@ -69,8 +93,9 @@ namespace ConsoleApp1
 
             Console.WriteLine(string.Format("Init material with buyprice= {0} and sellprice={1}", buyprice, this.sellprice));
         }
-        public virtual void Buy(int quantity) { Console.WriteLine("buy material  quantity =" + quantity.ToString() + " with price " + buyprice.ToString()); }
-        public virtual void Buy(int quantity, double custombuyprice) { Console.WriteLine("buy material quantity =" + quantity.ToString() + " with price " + custombuyprice.ToString()); }
+        [Conditional("CompileCondition")]
+        public abstract void Buy(int quantity);
+        public abstract void Buy(int quantity, double custombuyprice);
         public abstract void Sell(int quantity);
         public abstract void Sell(int quantity, double? sellprice);
 

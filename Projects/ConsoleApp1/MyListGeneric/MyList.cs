@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System.Collections.Generic;
+using System;
 namespace MyListGeneric
+
 {
-    public class MyList<T>
+    public class MyList<T> where T : class, IComparable   //,IEquatable<T>
     {
         /// <summary>
         /// length of array filled by items
@@ -64,13 +62,13 @@ namespace MyListGeneric
 
             length = arr.Length;
         }
-      
+
         public MyList<T> MakeCopy()
         {
             MyList<T> t = new MyList<T>(this);
             return t;
         }
-        
+
         public void RemoveAt(int index)
         {
             if (index >= 0 && index <= Length() - 1)
@@ -81,7 +79,11 @@ namespace MyListGeneric
                 length--;
             }
         }
-   
+
+        public void Add(T toadd)
+        {
+            this.AddAt(Length(), toadd);
+        }
         public void AddAt(int index, T toadd)
         {
 
