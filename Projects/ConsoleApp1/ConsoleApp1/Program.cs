@@ -1,9 +1,6 @@
 ﻿//#define CompileCondition 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MyListGeneric;
 using System.Diagnostics;
 
@@ -17,18 +14,22 @@ namespace ConsoleApp1
             try
             {
                 log.WriteSucces("Programm was started!");
+
                 MaterialEqualityComparer mec = new MaterialEqualityComparer();
                 MaterialPriaorityComparer mpc = new MaterialPriaorityComparer();
+
                 var m3 = new solidmaterial("sugar", 100);
                 m3.Buy(1, 200);
 
                 m3.Buy(2, 10);
                 m3.Sell(2);
+
                 System.Diagnostics.Debug.WriteLine("weght for {0} is {1}", m3.Name, m3.Weight);
                 Debugger.Break();
                 //EventInstance ei = new EventInstance(1, 0);
                 // System.Diagnostics.EventLog.WriteEvent("Console1", ei);
                 //Process p=System.Diagnostics.Process.GetCurrentProcess();   
+
                 Console.WriteLine();
 
                 solidmaterial m2 = new solidmaterial("sugar", 200);
@@ -49,21 +50,23 @@ namespace ConsoleApp1
                 Dictionary<material, string> d = new Dictionary<material, string>(mec);
                 d.Add(m2, "sugar quality 1");
                 d.Add(m1, "water Distilled");
-
                 //d.Add(m3, "sugar quality 2");
 
-               // MyList<int> mylist1 = new MyList<int>();
-               // mylist1.AddAt(0,1);
-               // mylist1.AddAt(-1, 1);
+                // MyList<int> mylist1 = new MyList<int>();
+                // mylist1.AddAt(0,1);
+                // mylist1.AddAt(-1, 1);
 
-
-                 //MyList<material> list = new MyList<material>();
-                List<material> list = new List<material>();
+                material mt = new liquidmaterial("water", 100);
+                MyList<material> list = new MyList<material>();
+                //  List<material> list = new List<material>();
                 list.Add(m2);
                 list.Add(m1);
                 list.Add(m3);
+
+                int i = list.IndexOf(mt);
+
                 //list.Sort(mpc);
-                list.Sort();  
+                //list.Sort();  
 
                 Console.ReadLine();
 

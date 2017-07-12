@@ -1,0 +1,29 @@
+﻿using System;
+
+namespace LinQAdvanced
+{
+    public class ConditionToCompare<U> where U : IComparable<U>, IEquatable<U>
+    {
+        private U compareTo;
+
+        public Func<U, bool> f1 = null;
+        public Func<U, int, bool> f2 = null;
+        public U compareToObject
+        {
+            get { return compareTo; }
+        }
+        public ConditionToCompare(U compareTo)
+        {
+            this.compareTo = compareTo;
+        }
+        int CompareTo(U tocompare)
+        {
+            return compareTo.CompareTo(tocompare);
+        }
+
+        bool Equal(U tocompare)
+        {
+            return compareTo.Equals(tocompare);
+        }
+    }
+}

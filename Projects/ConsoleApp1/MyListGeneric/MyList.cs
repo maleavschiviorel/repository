@@ -1,9 +1,16 @@
-﻿using System.Collections.Generic;
+﻿//#define useclass
+#define IEquatable
 using System;
 namespace MyListGeneric
 
 {
-    public class MyList<T> where T : class, IComparable   //,IEquatable<T>
+    public class MyList<T>
+#if useclass        
+        where T : class, IComparable
+#if IEquatable
+        , IEquatable<T>
+#endif
+#endif
     {
         /// <summary>
         /// length of array filled by items
@@ -11,6 +18,8 @@ namespace MyListGeneric
         private int length = 0;
         private static int additemscount = 4;
         private T[] arr = new T[additemscount];
+
+
         public T[] Arr
         {
             get
@@ -52,9 +61,16 @@ namespace MyListGeneric
             T[] arr = new T[additemscount];
             this.length = 0;
         }
+
+        public MyList<T> MakeCopy()
+        {
+            MyList<T> t = new MyList<T>(this);
+            return t;
+        }
+
         public void AssignToMyList(T[] arr)
         {
-            if (Length() < arr.Length)
+            if (this.arr.Length < arr.Length)
                 this.arr = new T[arr.Length];
 
             for (int i = 0; i < arr.Length; i++)
@@ -63,23 +79,17 @@ namespace MyListGeneric
             length = arr.Length;
         }
 
-        public MyList<T> MakeCopy()
+        public int IndexOf(T tofind)
         {
-            MyList<T> t = new MyList<T>(this);
-            return t;
-        }
-
-        public void RemoveAt(int index)
-        {
-            if (index >= 0 && index <= Length() - 1)
+            for (int i = 0; i < length; i++)
             {
-                for (int i = index; i < Length() - 1; i++)
-                    arr[i] = arr[i + 1];
-
-                length--;
+                if (((IEquatable<T>)arr[i]).Equals(tofind))
+                    //if (arr[i].Equals(tofind))
+                    return i;
             }
-        }
 
+            return -1;
+        }
         public void Add(T toadd)
         {
             this.AddAt(Length(), toadd);
@@ -106,7 +116,16 @@ namespace MyListGeneric
             arr[Length()] = toassign;
             length++;
         }
+        public void RemoveAt(int index)
+        {
+            if (index >= 0 && index <= Length() - 1)
+            {
+                for (int i = index; i < Length() - 1; i++)
+                    arr[i] = arr[i + 1];
 
+                length--;
+            }
+        }
         public int Length()
         {
             if (arr == null)

@@ -1,15 +1,15 @@
-﻿
+﻿#define IEquatable
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Log;
 using System.Diagnostics;
 
 namespace ConsoleApp1
 {
 
-    public abstract class material : IComparable
+    public abstract class material :
+        IComparable
+#if IEquatable
+        , IEquatable<material>
+#endif
     {
         public enum TypeOfObtain : byte { synthetic = 1, organic, chemical = 5 };
 
@@ -98,6 +98,36 @@ namespace ConsoleApp1
         public abstract void Buy(int quantity, double custombuyprice);
         public abstract void Sell(int quantity);
         public abstract void Sell(int quantity, double? sellprice);
+
+#if IEquatable
+        public override bool Equals(object m)
+        {
+            if (m is material)
+            {
+                material m2 = m as material;
+                if (this.Name.CompareTo(m2.Name) == 0 && this.Buyprice.HasValue && m2.Buyprice.HasValue)
+                    return ((double)this.Buyprice) == ((double)m2.Buyprice);
+                else
+                    return this.Name.Equals(m2.Name);
+            }
+            else
+            {
+                throw new Exception("not of type material");
+            }
+            return false;
+        }
+
+        bool IEquatable<material>.Equals(material m)
+        {
+
+            material m2 = m as material;
+            if (this.Name.CompareTo(m2.Name) == 0 && this.Buyprice.HasValue && m2.Buyprice.HasValue)
+                return ((double)this.Buyprice) == ((double)m2.Buyprice);
+            else
+                return this.Name.Equals(m2.Name);
+
+        }
+#endif
 
     }
 }

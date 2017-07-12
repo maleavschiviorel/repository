@@ -1,5 +1,4 @@
-﻿//#define CompileCondition1
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +14,6 @@ namespace ConsoleApp1
             get { return volume_m3; }
 
         }
-
 
         public liquidmaterial(string Name, double buyprice) : base(Name, buyprice, buyprice * 5 * SellKoef)
         {
@@ -57,9 +55,6 @@ namespace ConsoleApp1
 
             }
         }
-
-        //#if   CompileCondition1
-
        
         public override void Buy(int quantity)
         {
@@ -86,7 +81,6 @@ namespace ConsoleApp1
             }
 
         }
-//#endif 
         public override void Buy(int quantity, double custombuyprice)
         {
             try
