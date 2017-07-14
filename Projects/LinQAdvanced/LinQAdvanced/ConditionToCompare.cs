@@ -4,6 +4,8 @@ namespace LinQAdvanced
 {
     public class ConditionToCompare<U> where U : IComparable<U>, IEquatable<U>
     {
+        public int Skip_Count = 0;
+
         private U compareTo;
 
         public Func<U, bool> f1 = null;
@@ -15,6 +17,10 @@ namespace LinQAdvanced
         public ConditionToCompare(U compareTo)
         {
             this.compareTo = compareTo;
+        }
+        public ConditionToCompare(int Count)
+        {
+            this.Skip_Count = Count;
         }
         int CompareTo(U tocompare)
         {

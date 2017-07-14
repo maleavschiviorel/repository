@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{465ED360-B166-4195-B150-948AE3C2FD90}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Magazin</RootNamespace>
-    <AssemblyName>Magazin</AssemblyName>
+    <ProjectGuid>{C96A60D6-7FAF-4253-8020-BF56B717E6B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClassLibrary2</RootNamespace>
+    <AssemblyName>ClassLibrary2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,26 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericRepository.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MyList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MaterialActionsProcess\MaterialActionsProcess.csproj">
-      <Project>{b1b1219c-e246-45d8-a925-03501db55a94}</Project>
-      <Name>MaterialActionsProcess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Materials\Materials.csproj">
-      <Project>{010e0910-5235-4778-af5c-0090c0ccbcb7}</Project>
-      <Name>Materials</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyListGeneric\MyListGeneric.csproj">
-      <Project>{c96a60d6-7faf-4253-8020-bf56b717e6b4}</Project>
-      <Name>MyListGeneric</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

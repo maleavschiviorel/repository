@@ -36,7 +36,46 @@ namespace LinQAdvanced
                 q = toprocess.Where(x => x.Equals(co.compareToObject));
             return q;
         }
-
-
+        public IEnumerable<U> Take(IEnumerable<U> toprocess, ConditionToCompare<U> co)
+        {
+            IEnumerable<U> q = null;
+            q = toprocess.Take(co.Skip_Count); ;
+            return q;
+        }
+        public IEnumerable<U> Skip(IEnumerable<U> toprocess, ConditionToCompare<U> co)
+        {
+            IEnumerable<U> q = null;
+            q = toprocess.Skip(co.Skip_Count); ;
+            return q;
+        }
+        public IEnumerable<U> TakeWhile(IEnumerable<U> toprocess, ConditionToCompare<U> co)
+        {
+            IEnumerable<U> q = null;
+            if (co.f1 != null)
+                q = toprocess.TakeWhile(co.f1);
+            else if (co.f2 != null)
+                q = toprocess.TakeWhile(co.f2);
+            else
+                q = toprocess.TakeWhile(x => x.Equals(co.compareToObject));
+            return q;
+        }
+        public IEnumerable<U> SkipWhile(IEnumerable<U> toprocess, ConditionToCompare<U> co)
+        {
+            IEnumerable<U> q = null;
+            if (co.f1 != null)
+                q = toprocess.SkipWhile(co.f1);
+            else if (co.f2 != null)
+                q = toprocess.SkipWhile(co.f2);
+            else
+                q = toprocess.SkipWhile(x => x.Equals(co.compareToObject));
+            return q;
+        }
+        public IEnumerable<U> Distinct(IEnumerable<U> toprocess, ConditionToCompare<U> co=null)
+        {
+            IEnumerable<U> q = null;
+            q = toprocess.Distinct(); 
+            return q;
+        }
+       
     }
 }

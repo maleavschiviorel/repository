@@ -12,8 +12,13 @@ namespace LinQAdvanced
         static void Main(string[] args)
         {
             TestLinQEngine tlinq = new TestLinQEngine();
-            tlinq.Filter();
-
+            //tlinq.Filter();
+            //tlinq.Take();
+            //tlinq.Skip();
+            //tlinq.TakeWhile();
+            //tlinq.SkipWhile();
+            //tlinq.Distict();
+            tlinq.Join(); 
             Console.ReadLine();  
         }
     }

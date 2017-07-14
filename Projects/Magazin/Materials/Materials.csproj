@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{465ED360-B166-4195-B150-948AE3C2FD90}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Magazin</RootNamespace>
-    <AssemblyName>Magazin</AssemblyName>
+    <ProjectGuid>{010E0910-5235-4778-AF5C-0090C0CCBCB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Materials</RootNamespace>
+    <AssemblyName>Materials</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,26 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericRepository.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="LiquidMaterial.cs" />
+    <Compile Include="Material.cs" />
+    <Compile Include="MyExceptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolidMaterial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Log\Log.csproj">
+      <Project>{91a96888-20c6-45b0-91eb-fc9a68e522e0}</Project>
+      <Name>Log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MaterialActionsProcess\MaterialActionsProcess.csproj">
       <Project>{b1b1219c-e246-45d8-a925-03501db55a94}</Project>
       <Name>MaterialActionsProcess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Materials\Materials.csproj">
-      <Project>{010e0910-5235-4778-af5c-0090c0ccbcb7}</Project>
-      <Name>Materials</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyListGeneric\MyListGeneric.csproj">
-      <Project>{c96a60d6-7faf-4253-8020-bf56b717e6b4}</Project>
-      <Name>MyListGeneric</Name>
-    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

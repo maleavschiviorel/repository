@@ -14,10 +14,13 @@ namespace LinQAdvanced
         {
             foreach (var a in arr)
             {
-                Console.Write( a.ToString()+" ~ "); 
+                Console.WriteLine( a.ToString()); 
             }
-            Console.WriteLine();  
+            Console.WriteLine("\r\n-----------------------------\r\n");  
         }
-
+        public void SendToOutPut(string str)
+        {
+            Console.WriteLine("\r\n"+str);
+        }
     }
 }
