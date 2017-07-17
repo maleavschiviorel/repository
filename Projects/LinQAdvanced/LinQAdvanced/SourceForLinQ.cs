@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace LinQAdvanced
 {
-   public  class SourceForLinQ
+    public class SourceForLinQ
     {
         public IEnumerable<string> GetSource()
         {
-            string[] dir = System.IO.Directory.GetDirectories("D:\\");
-            var q= System.IO.Directory.GetDirectories(@"D:\localrepo").SelectMany (x => System.IO.Directory.GetFiles(x));
-            return q;
+            string[] directories = Directory.GetDirectories("D:\\");
+            var fileNames = Directory.GetDirectories(@"D:\localrepo").SelectMany(Directory.GetFiles);
+            return fileNames;
            // new string[] { "first", "second", "third" };
         }
+
         public IEnumerable<string[]> GetSource1()
         {
-            string[] dir = System.IO.Directory.GetDirectories("D:\\");
-            var q = System.IO.Directory.GetDirectories(@"D:\localrepo").Select(x => System.IO.Directory.GetFiles(x));
-            return q;
+            string[] directories = Directory.GetDirectories("D:\\");
+            var groupsOfFileNames = Directory.GetDirectories(@"D:\localrepo").Select(Directory.GetFiles);
+            return groupsOfFileNames;
             // new string[] { "first", "second", "third" };
         }
     }

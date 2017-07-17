@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace Magazin.Domain
+namespace Materials
 {
     public class SolidMaterial : Material
     {
@@ -42,6 +45,10 @@ namespace Magazin.Domain
             weight = weight + quantity;
 
             Console.WriteLine("buy SolidMaterial  quantity =" + quantity.ToString() + " with price " + buyprice.ToString());
+
+
+            if (Map != null)
+                Map.GenerateMaterialOperationEvent(Id, Name, "SolidMaterial", MaterialActionsProcess.Operation.Buy, quantity);
         }
         public override void Buy(int quantity, double custombuyprice)
         {
@@ -54,6 +61,10 @@ namespace Magazin.Domain
             else
                 //throw new Exception("custom buy price is more then default buy price");
                 Console.WriteLine("custom buy price is more then default buy price");
+
+
+            if (Map != null)
+                Map.GenerateMaterialOperationEvent(Id, Name, "SolidMaterial", MaterialActionsProcess.Operation.Buy, quantity);
         }
         public override void Sell(int quantity, double? selprice)
         {
@@ -64,6 +75,10 @@ namespace Magazin.Domain
 
             maxsellprice = selprice ?? this.sellprice;
             Console.WriteLine("sell SolidMaterial quantity =" + quantity.ToString() + " with price " + sellprice.ToString());
+
+
+            if (Map != null)
+                Map.GenerateMaterialOperationEvent(Id, Name, "SolidMaterial",  MaterialActionsProcess.Operation.Sell , quantity);
         }
       
         public override void Sell(int quantity)

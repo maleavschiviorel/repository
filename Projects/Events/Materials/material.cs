@@ -1,8 +1,9 @@
 ﻿#define IEquatable
 using System;
 using System.Diagnostics;
+using MaterialActionsProcess;
 
-namespace Magazin.Domain
+namespace Materials
 {
 
     public abstract class Material : Entity,
@@ -15,6 +16,7 @@ namespace Magazin.Domain
 
         static public double addCoef = 1;
 
+        private static MateriaActionsProcessor _map;
         private string name = "";
 
         protected readonly double? buyprice = null;
@@ -23,8 +25,15 @@ namespace Magazin.Domain
         protected Log.Log log = Log.Log.GetTheLog();
 
         public const double SellKoef = 1.5;
-        public TypeOfObtain MaterialIs { get; set; }
-
+        public TypeOfObtain MaterialIs
+        {
+            get;
+            set;
+        }
+        protected MateriaActionsProcessor Map
+        {
+            get { return _map; }
+        }
         public int CompareTo(object m)
         {
             if (m is Material)
@@ -105,7 +114,16 @@ namespace Magazin.Domain
 
             Console.WriteLine(string.Format("Init Material with buyprice= {0} and sellprice={1}", buyprice, this.sellprice));
         }
+        [Conditional("CompileCondition")]
+        public abstract void Buy(int quantity);
+        public abstract void Buy(int quantity, double custombuyprice);
+        public abstract void Sell(int quantity);
+        public abstract void Sell(int quantity, double? sellprice);
 
+        public static void SetMaterialActionsProcessor(MateriaActionsProcessor map)
+        {
+            _map = map;
+        }
 #if IEquatable
         public override bool Equals(object m)
         {

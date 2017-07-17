@@ -18,8 +18,15 @@ namespace LinQAdvanced
             //tlinq.TakeWhile();
             //tlinq.SkipWhile();
             //tlinq.Distict();
-            tlinq.Join(); 
-            Console.ReadLine();  
+            //tlinq.Join();
+            //tlinq.GroupJoin ();
+            //tlinq.Zip();
+            // tlinq.OrderBy();
+            //tlinq.ThenBy();
+            //tlinq.OrderByDescending();
+            //tlinq.ThenByDescending();
+            tlinq.Reverse();  
+            Console.ReadLine();
         }
     }
 }

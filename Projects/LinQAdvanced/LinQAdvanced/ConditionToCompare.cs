@@ -4,32 +4,38 @@ namespace LinQAdvanced
 {
     public class ConditionToCompare<U> where U : IComparable<U>, IEquatable<U>
     {
-        public int Skip_Count = 0;
+        private U _compareTo;
 
-        private U compareTo;
+        public int SkipCount { get; private set; }
+               
+        public Func<U, bool> F1 { get; set; }
 
-        public Func<U, bool> f1 = null;
-        public Func<U, int, bool> f2 = null;
-        public U compareToObject
+        public Func<U, int, bool> F2 { get; set; }
+
+        public U CompareToObject
         {
-            get { return compareTo; }
+            get { return _compareTo; }
         }
+
         public ConditionToCompare(U compareTo)
         {
-            this.compareTo = compareTo;
-        }
-        public ConditionToCompare(int Count)
-        {
-            this.Skip_Count = Count;
-        }
-        int CompareTo(U tocompare)
-        {
-            return compareTo.CompareTo(tocompare);
+            _compareTo = compareTo;
         }
 
-        bool Equal(U tocompare)
+        public ConditionToCompare(int count)
         {
-            return compareTo.Equals(tocompare);
+            SkipCount = count;
+        }
+
+        private int CompareTo(U toCompare)
+        {
+            var comparationResult = _compareTo.CompareTo(toCompare);
+            return comparationResult;
+        }
+
+        private bool Equal(U toCompare)
+        {
+            return _compareTo.Equals(toCompare);
         }
     }
 }

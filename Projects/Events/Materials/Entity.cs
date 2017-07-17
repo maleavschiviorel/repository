@@ -1,4 +1,4 @@
-﻿namespace Magazin.Domain
+﻿namespace Materials
 
 {
     public class Entity
