@@ -12,7 +12,15 @@ namespace LinQAdvanced
         static void Main(string[] args)
         {
             TestLinQEngine tlinq = new TestLinQEngine();
-            //tlinq.Filter();
+            //tlinq.FilterWithDelegate();
+            //tlinq.FilterWithAnonymousFunction();
+            //tlinq.FilterWithAnonymousFunction1();
+            //tlinq.FilterWithLamdaExpression();
+            //tlinq.FilterWithLamdaExpression1();
+            //tlinq.FilterWithQuery();
+            //tlinq.FilterWithExtention();
+
+            tlinq.Filter();
             //tlinq.Take();
             //tlinq.Skip();
             //tlinq.TakeWhile();
@@ -25,7 +33,8 @@ namespace LinQAdvanced
             //tlinq.ThenBy();
             //tlinq.OrderByDescending();
             //tlinq.ThenByDescending();
-            tlinq.Reverse();  
+            //tlinq.Reverse();
+            //tlinq.GroupBy();
             Console.ReadLine();
         }
     }

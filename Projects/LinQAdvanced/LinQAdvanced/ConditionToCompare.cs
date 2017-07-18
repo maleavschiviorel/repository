@@ -1,8 +1,8 @@
 ﻿using System;
-
+using System.Collections.Generic; 
 namespace LinQAdvanced
 {
-    public class ConditionToCompare<U> where U : IComparable<U>, IEquatable<U>
+    public class ConditionToCompare<U>:IEqualityComparer<U> where U : IComparable<U>, IEquatable<U>
     {
         private U _compareTo;
 
@@ -16,7 +16,9 @@ namespace LinQAdvanced
         {
             get { return _compareTo; }
         }
-
+        public ConditionToCompare()
+        {
+        }
         public ConditionToCompare(U compareTo)
         {
             _compareTo = compareTo;
@@ -36,6 +38,16 @@ namespace LinQAdvanced
         private bool Equal(U toCompare)
         {
             return _compareTo.Equals(toCompare);
+        }
+
+        public bool Equals(U x, U y)
+        {
+            return x.Equals(y);
+        }
+
+        public int GetHashCode(U obj)
+        {
+            return obj.GetHashCode() ;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace LinQAdvanced
 
         private static object ob = new object();
 
-        private LinQEngine()
+        protected LinQEngine()
         { }
 
         public LinQEngine<T, U> LinqEngine
@@ -30,7 +30,7 @@ namespace LinQAdvanced
             }
             return linqEngine;
         }
-
+   
         public IEnumerable<U> Filter(IEnumerable<U> toprocess, ConditionToCompare<U> co)
         {
             IEnumerable<U> q = null;
@@ -44,6 +44,7 @@ namespace LinQAdvanced
                 q = toprocess.Where(x => x.Equals(co.CompareToObject));
             return q;
         }
+
 
         public IEnumerable<U> Take(IEnumerable<U> toprocess, ConditionToCompare<U> co)
         {
