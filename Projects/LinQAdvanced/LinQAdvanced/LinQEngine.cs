@@ -102,5 +102,10 @@ namespace LinQAdvanced
             var result = toprocess.Reverse();
             return result;
         }
+        public IEnumerable<U> Concat(IEnumerable<U> toprocess1, IEnumerable<U> toprocess2, ConditionToCompare<U> co = null)
+        {
+            var result = toprocess1.Concat(toprocess2);
+            return result;
+        }
     }
 }

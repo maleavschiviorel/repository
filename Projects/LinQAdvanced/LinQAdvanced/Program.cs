@@ -20,7 +20,7 @@ namespace LinQAdvanced
             //tlinq.FilterWithQuery();
             //tlinq.FilterWithExtention();
 
-            tlinq.Filter();
+            //tlinq.Filter();
             //tlinq.Take();
             //tlinq.Skip();
             //tlinq.TakeWhile();
@@ -35,6 +35,7 @@ namespace LinQAdvanced
             //tlinq.ThenByDescending();
             //tlinq.Reverse();
             //tlinq.GroupBy();
+            tlinq.Concat();  
             Console.ReadLine();
         }
     }

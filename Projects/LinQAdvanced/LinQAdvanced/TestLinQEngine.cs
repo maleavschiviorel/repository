@@ -3,9 +3,19 @@ using System.Linq;
 
 namespace LinQAdvanced
 {
-    public class Vendor
+    public class Vendor:IComparable<Vendor> ,IEquatable<Vendor> 
     {
         public string Name { get; set; }
+
+        public int CompareTo(Vendor obj)
+        {
+           return this.Name.CompareTo(obj.Name );
+        }
+
+        public bool Equals(Vendor other)
+        {
+            return this.Name.Equals(other.Name );
+        }
     }
 
     public class Material
@@ -249,6 +259,20 @@ namespace LinQAdvanced
                 {
                     Console.WriteLine("-----Vendor={0}", b.MaterialName);
                 }
+            }
+        }
+
+        public void Concat()
+        {
+            LinQEngine<Vendor, Vendor> linqEngine1 = LinQEngine<Vendor, Vendor>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }};
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" } };
+            var res = linqEngine1.Concat( vendors1, vendors2);
+
+            foreach (var a in res)
+            {
+                Console.WriteLine("Vendor={0}", a.Name );
             }
         }
 
