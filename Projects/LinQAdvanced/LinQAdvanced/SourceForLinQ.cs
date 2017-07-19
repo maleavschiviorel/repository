@@ -9,7 +9,7 @@ namespace LinQAdvanced
         public IEnumerable<string> GetSource()
         {
             string[] directories = Directory.GetDirectories("D:\\");
-            var fileNames = Directory.GetDirectories(@"D:\localrepo").SelectMany(Directory.GetFiles);
+            var fileNames =DriveInfo.GetDrives().Select(driver=>driver.Name).Where(driver=>{try{Directory.GetDirectories(driver);return true;}catch{return false;}}).SelectMany(driver=> Directory.GetDirectories(driver)).Where(directory => { try { Directory.GetFiles(directory); return true; } catch { return false; } }).SelectMany(Directory.GetFiles);
             return fileNames;
            // new string[] { "first", "second", "third" };
         }
