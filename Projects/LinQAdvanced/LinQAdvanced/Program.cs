@@ -35,7 +35,23 @@ namespace LinQAdvanced
             //tlinq.ThenByDescending();
             //tlinq.Reverse();
             //tlinq.GroupBy();
-            tlinq.Concat();  
+            //tlinq.Concat();  
+
+            //tlinq.Union ();
+            //tlinq.Intersect();
+            //tlinq.Except();
+            //tlinq.OfType();
+            //tlinq.Cast();
+            //tlinq.ToArrayTolist();
+            //tlinq.ToDictionary();
+            //tlinq.ToLookUp();
+            //tlinq.AsEnumerable();
+            //tlinq.AsQueryable();
+            //tlinq.FirstFirstOrDefault();
+            // tlinq.LastLastOrDefault ();
+            // tlinq.SigleSingleOrDefault();
+            // tlinq.ElementAtElementAtOrDefault();
+            tlinq.DefaultIfEmpty();  
             Console.ReadLine();
         }
     }

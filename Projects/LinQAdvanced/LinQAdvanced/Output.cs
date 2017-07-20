@@ -17,7 +17,7 @@ namespace LinQAdvanced
             Console.WriteLine("\r\n-----------------------------\r\n");  
         }
 
-        public void SendToOutPut(string str)
+        public void SendToOutPut(U  str)
         {
             Console.WriteLine("\r\n"+str);
         }

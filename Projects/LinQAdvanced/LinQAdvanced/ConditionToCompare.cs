@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 namespace LinQAdvanced
 {
-    public class ConditionToCompare<U>:IEqualityComparer<U> where U : IComparable<U>, IEquatable<U>
+    public class ConditionToCompare<U> : IEqualityComparer<U> where U : IComparable<U>, IEquatable<U>
     {
         private U _compareTo;
 
         public int SkipCount { get; private set; }
-               
+
         public Func<U, bool> F1 { get; set; }
 
         public Func<U, int, bool> F2 { get; set; }
@@ -47,7 +47,8 @@ namespace LinQAdvanced
 
         public int GetHashCode(U obj)
         {
-            return obj.GetHashCode() ;
+            return obj.ToString(). GetHashCode();//in interior hashcode-ul este folosit ca identificator de cautare/comparare apoi daca hashcodul coincide cheama functia Equals ca sa vada daca este egal
+                                                 //pentru modul meu de comparare hashcodul trebuie sa fie redefinit dupa modul de comparare
         }
     }
 }

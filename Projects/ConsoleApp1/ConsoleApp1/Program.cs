@@ -50,7 +50,7 @@ namespace ConsoleApp1
                 Dictionary<material, string> d = new Dictionary<material, string>(mec);
                 d.Add(m2, "sugar quality 1");
                 d.Add(m1, "water Distilled");
-                //d.Add(m3, "sugar quality 2");
+                d.Add(m3, "sugar quality 2");
 
                 // MyList<int> mylist1 = new MyList<int>();
                 // mylist1.AddAt(0,1);

@@ -30,7 +30,7 @@ namespace LinQAdvanced
             }
             return linqEngine;
         }
-   
+
         public IEnumerable<U> Filter(IEnumerable<U> toprocess, ConditionToCompare<U> co)
         {
             IEnumerable<U> q = null;
@@ -105,6 +105,21 @@ namespace LinQAdvanced
         public IEnumerable<U> Concat(IEnumerable<U> toprocess1, IEnumerable<U> toprocess2, ConditionToCompare<U> co = null)
         {
             var result = toprocess1.Concat(toprocess2);
+            return result;
+        }
+        public IEnumerable<U> Union(IEnumerable<U> toprocess1, IEnumerable<U> toprocess2, ConditionToCompare<U> co = null)
+        {
+            var result = co != null ? toprocess1.Union(toprocess2, co) : toprocess1.Union(toprocess2);
+            return result;
+        }
+        public IEnumerable<U> Intersect(IEnumerable<U> toprocess1, IEnumerable<U> toprocess2, ConditionToCompare<U> co = null)
+        {
+            var result = co != null ? toprocess1.Intersect(toprocess2, co) : toprocess1.Intersect(toprocess2);
+            return result;
+        }
+        public IEnumerable<U> Except(IEnumerable<U> toprocess1, IEnumerable<U> toprocess2, ConditionToCompare<U> co = null)
+        {
+            var result = co != null ? toprocess1.Except(toprocess2, co) : toprocess1.Except(toprocess2);
             return result;
         }
     }
