@@ -8,7 +8,16 @@
 
         public string VendorName { get; set; }
 
-        public override int CompareTo(object obj)
+        public  int CompareTo(Entity obj)
+        {
+            return MyCompareTo(obj);
+        }
+
+        public  bool Equals(Entity other)
+        {
+            return MyEquals(other);
+        }
+        public override int MyCompareTo(Entity  obj)
         {
             Material materialObj = obj as Material;
             if (materialObj != null)
@@ -17,7 +26,7 @@
                 return this.ToString().CompareTo(obj.ToString());
         }
 
-        public override bool Equals(Entity other)
+        public override bool MyEquals(Entity other)
         {
             Material materialObj = other as Material;
             if (materialObj != null)

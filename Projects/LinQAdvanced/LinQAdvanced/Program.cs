@@ -51,7 +51,9 @@ namespace LinQAdvanced
             // tlinq.LastLastOrDefault ();
             // tlinq.SigleSingleOrDefault();
             // tlinq.ElementAtElementAtOrDefault();
-            tlinq.DefaultIfEmpty();  
+            //tlinq.DefaultIfEmpty();
+            //tlinq.CountLongCount();
+            tlinq.MinMax();
             Console.ReadLine();
         }
     }

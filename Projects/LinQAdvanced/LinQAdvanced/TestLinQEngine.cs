@@ -1,4 +1,5 @@
-﻿using System;
+﻿//#define VisualStudio2017
+using System;
 using System.Linq;
 using LinQAdvanced.Classes;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace LinQAdvanced
         {
             outs.SendToOutPut("------FilterWithAnonymousFunction");
             condition = new ConditionToCompare<string>("it");
-            condition.F1 = delegate (string x) { return x.Contains(condition.CompareToObject); };
+            condition.F1 = delegate(string x) { return x.Contains(condition.CompareToObject); };
             var filtrationResult = linqEngine.Filter(src.GetSource(), condition);
             outs.SendToOutPut(filtrationResult);
         }
@@ -503,7 +504,9 @@ namespace LinQAdvanced
 
             //var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).First(x => x.Id > 0);//daca nu este da eroare
             var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).FirstOrDefault(x => x.Id > 0);//daca nu este intoarce null
+#if VisualStudio2017
             Console.WriteLine("typeof({0}), obj={1}", res?.GetType().ToString() ?? "{is null}", res?.ToString() ?? "{is null}");
+#endif
         }
         public void LastLastOrDefault()
         {
@@ -519,8 +522,9 @@ namespace LinQAdvanced
 
             //var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Last();//daca nu este da eroare
             var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).LastOrDefault(x => x.Id == 0);//daca nu este intoarce null
-
+#if VisualStudio2017
             Console.WriteLine("typeof({0}), obj={1}", res?.GetType().ToString() ?? "{is null}", res?.ToString() ?? "{is null}");
+#endif
         }
         public void SigleSingleOrDefault()
         {
@@ -538,7 +542,9 @@ namespace LinQAdvanced
             try
             {
                 res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Single(x => x.ToString().Contains("Anvelope"));//daca sunt mai multe elemente in rezultat da eroare,daca nu este nici unul da eroare
+#if VisualStudio2017               
                 Console.WriteLine("typeof({0}), obj={1}", res?.GetType().ToString() ?? "{is null}", res?.ToString() ?? "{is null}");
+#endif
             }
             catch (Exception ex)
             {
@@ -547,7 +553,9 @@ namespace LinQAdvanced
             try
             {
                 res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).SingleOrDefault(x => x.ToString().Contains("Agurdino#"));//daca sunt mai multe elemente in rezultat da eroare, daca nu este nici unul da null
+#if VisualStudio2017
                 Console.WriteLine("typeof({0}), obj={1}", res?.GetType().ToString() ?? "{is null}", res?.ToString() ?? "{is null}");
+#endif
             }
             catch (Exception ex)
             {
@@ -572,7 +580,10 @@ namespace LinQAdvanced
             try
             {
                 res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).ElementAt(index);//// daca indexul e mai mare decint numarul de lemente -1 atunci da eroare
+
+#if VisualStudio2017
                 Console.WriteLine("element at index={0}, typeof({1}), obj={2}", index, res?.GetType().ToString() ?? "{is null}", res?.ToString() ?? "{is null}");
+#endif
             }
             catch (Exception ex)
             {
@@ -582,7 +593,9 @@ namespace LinQAdvanced
             {
                 index = 20;
                 res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).ElementAtOrDefault(index);// daca indexul e mai mare decint numarul de lemente -1 atunci intoarce null
+#if VisualStudio2017                
                 Console.WriteLine("element at index={0}, typeof({1}), obj={2}", index, res?.GetType().ToString() ?? "{is null}", res?.ToString() ?? "{is null}");
+#endif
             }
             catch (Exception ex)
             {
@@ -606,7 +619,7 @@ namespace LinQAdvanced
                 var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Where(x => x.Id == 0).DefaultIfEmpty(new Entity());//daca multimea e goala atunci se creaza un element default in multime si se intoarce
                 foreach (var a in res)
                 {
-                    Console.WriteLine("typeof({0}), obj={1}", a.GetType(), a.ToString());
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
                 }
             }
             catch (Exception ex)
@@ -615,5 +628,79 @@ namespace LinQAdvanced
             }
         }
 
+        public void CountLongCount()
+        {
+            outs.SendToOutPut("------CountLongCount");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            try
+            {
+                var count = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Count();
+                var countLong = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Distinct(condition1).LongCount(x => x.GetType().Equals(typeof(Vendor)));
+                outs.SendToOutPut("Count:" + count);
+                outs.SendToOutPut("LongCount of typeof("+typeof(Vendor).ToString().Split(new char[] { '.' }).Last()+"):" + countLong);
+
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+        }
+
+        public void MinMax()
+        {
+            outs.SendToOutPut("------MinMax");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            try
+            {
+                var MinEntity = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Min<Entity>();
+                var MaxEntity = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Max<Entity>();
+                outs.SendToOutPut("MinEntity: " + MinEntity.ToString ());
+                outs.SendToOutPut("MaxEntity: " + MaxEntity.ToString());
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+        }
     }
 }
