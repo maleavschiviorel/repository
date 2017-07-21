@@ -2,8 +2,6 @@
 {
     public class Vendor : Entity
     {
-        public string Name { get; set; }
-
         public  int CompareTo(Entity  obj)
         {
             return MyCompareTo(obj);

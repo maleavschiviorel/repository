@@ -1,4 +1,4 @@
-﻿//#define VisualStudio2017
+﻿#define VisualStudio2017
 using System;
 using System.Linq;
 using LinQAdvanced.Classes;
@@ -39,7 +39,7 @@ namespace LinQAdvanced
         {
             outs.SendToOutPut("------FilterWithAnonymousFunction");
             condition = new ConditionToCompare<string>("it");
-            condition.F1 = delegate(string x) { return x.Contains(condition.CompareToObject); };
+            condition.F1 = delegate (string x) { return x.Contains(condition.CompareToObject); };
             var filtrationResult = linqEngine.Filter(src.GetSource(), condition);
             outs.SendToOutPut(filtrationResult);
         }
@@ -657,7 +657,7 @@ namespace LinQAdvanced
                 var count = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Count();
                 var countLong = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Distinct(condition1).LongCount(x => x.GetType().Equals(typeof(Vendor)));
                 outs.SendToOutPut("Count:" + count);
-                outs.SendToOutPut("LongCount of typeof("+typeof(Vendor).ToString().Split(new char[] { '.' }).Last()+"):" + countLong);
+                outs.SendToOutPut("LongCount of typeof(" + typeof(Vendor).ToString().Split(new char[] { '.' }).Last() + "):" + countLong);
 
             }
             catch (Exception ex)
@@ -694,7 +694,7 @@ namespace LinQAdvanced
             {
                 var MinEntity = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Min<Entity>();
                 var MaxEntity = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Max<Entity>();
-                outs.SendToOutPut("MinEntity: " + MinEntity.ToString ());
+                outs.SendToOutPut("MinEntity: " + MinEntity.ToString());
                 outs.SendToOutPut("MaxEntity: " + MaxEntity.ToString());
             }
             catch (Exception ex)
@@ -702,5 +702,380 @@ namespace LinQAdvanced
                 outs.SendToOutPut("Error:" + ex.Message);
             }
         }
+
+        public void SumAverage()
+        {
+            outs.SendToOutPut("------SumAverage");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            try
+            {
+                var MinEntity = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Sum<Entity>(x => x.GetHashCode());
+                var MaxEntity = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Average<Entity>(x => x.GetHashCode());
+                outs.SendToOutPut("Sum: " + MinEntity.ToString());
+                outs.SendToOutPut("Average: " + MaxEntity.ToString("0.0000"));
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+        }
+        public void Agregate()
+        {
+            outs.SendToOutPut("------Agregate");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Aggregate("", (allNames, entity) => allNames += ((allNames != "" ? ", " : "") + entity.ToString()));
+                outs.SendToOutPut("allEntities: " + res);
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+        }
+        public void Contains()
+        {
+            outs.SendToOutPut("------Contains");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            try
+            {
+                Entity entityObj = new Vendor { Name = "Agurdino" };
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Contains(entityObj);
+                outs.SendToOutPut(string.Format("object {0} is contained: {1}", entityObj.ToString(), res));
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+        }
+        public void Any()
+        {
+            outs.SendToOutPut("------Any");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            try
+            {
+                Entity entityObj = new Vendor { Name = "Agurdino" };
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Any(x => x.Equals(entityObj));
+                outs.SendToOutPut(string.Format("object {0} satisfies condition of presence: {1}", entityObj.ToString(), res));
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+        }
+
+        public void All()
+        {
+            outs.SendToOutPut("------All");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Any(x => x.Id == 0);
+                outs.SendToOutPut(string.Format("all entities have id==0: {0}", res));
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+        }
+        public void SequanceEqual()
+        {
+            outs.SendToOutPut("------SequanceEqual");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+
+            var vendors11 = new Vendor[] { new Vendor { Name = "Knauf" }, new Vendor { Name = "Micheline" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors11.ToList());
+
+            try
+            {
+                var res = vendors1.SequenceEqual(vendors1, condition1);
+                outs.SendToOutPut(string.Format("both sequance are equal: {0}", res));
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+
+        }
+        public void Empty()
+        {
+            outs.SendToOutPut("------Empty");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+
+
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            outs.SendToOutPut("--------------------------------");
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).
+                    Aggregate(Enumerable.Empty<Entity>(), (reposit, entity) => entity?.Name.ToLower().Contains("i") ?? false ? reposit.Union(new List<Entity>() { entity }) : reposit);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+
+        }
+        public void Repeat()
+        {
+            outs.SendToOutPut("------Repeat");
+            ConditionToCompare<Entity> condition1 = new ConditionToCompare<Entity>();
+            LinQEngine<Entity, Entity> linqEngine1 = LinQEngine<Entity, Entity>.GetLinqEngine();
+            var vendors1 = new Vendor[] { new Vendor { Name = "Micheline" }, new Vendor { Name = "Knauf" }, new Vendor { Name = "Zorile" }, new Vendor { Name = "Ionel" } };
+            var vendors2 = new Vendor[] { new Vendor { Name = "Kama" }, new Vendor { Name = "Agurdino" }, new Vendor { Name = "Hincu" }, new Vendor { Name = "Ionel" } };
+            var matetials = new Material[] { new Material { Name = "Anvelope", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" }, new Material { Name = "Vopsea", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Clei", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Lac", Vendor = vendors1[1], VendorName = "Knauf" }, new Material { Name = "Incaltaminte", Vendor = vendors1[2], VendorName = "Zorile" }, new Material { Name = "Couciuc", Vendor = vendors1[0], VendorName = "Micheline" } };
+
+
+            outs.SendToOutPut(vendors1.ToList());
+            outs.SendToOutPut(vendors2.ToList());
+            outs.SendToOutPut(matetials.ToList());
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+            outs.SendToOutPut("--------------------------------");
+            try
+            {
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).
+                    Aggregate(Enumerable.Repeat<Entity>(new Vendor { Name = "Ionel" }, 3), (reposit, entity) => entity?.Name.Contains("i") ?? false ? reposit.Concat(new List<Entity>() { entity }) : reposit);
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+
+        }
+        public void Range()
+        {
+            outs.SendToOutPut("------Range");
+            try
+            {
+                foreach (var a in Enumerable.Range(0, 10))
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+
+        }
+        public void Closure()
+        {
+            outs.SendToOutPut("------Closure");
+            int mynum = 100;
+
+            try
+            {
+                foreach (var a in Enumerable.Range(0, 10))
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+
+            outs.SendToOutPut("--------------------------------");
+
+            var res = Enumerable.Range(0, 10).Aggregate(Enumerable.Empty<int>(), (reposit, num) => num % 2 == 0 ? reposit.Concat(new List<int>() { num, mynum++ }) : reposit.Concat(new List<int>() { num }));
+            try
+            {
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+
+        }
+        public void Closure1()
+        {
+            outs.SendToOutPut("------Closure1");
+            int mynum = 100;
+
+            try
+            {
+                foreach (var a in Enumerable.Range(0, 10))
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+
+            outs.SendToOutPut("--------------------------------");
+
+            Func<IEnumerable<int>, int, IEnumerable<int>> myDelegateFunction;
+
+            myDelegateFunction = (IEnumerable<int> reposit, int num) =>
+            {
+                if (num % 2 == 0)
+                    return reposit.Concat(new List<int>() { num, mynum++ });
+                return reposit.Concat(new List<int>() { num });
+            };
+
+            var res = Enumerable.Range(0, 10).Aggregate(Enumerable.Empty<int>(), myDelegateFunction);
+            try
+            {
+                foreach (var a in res)
+                {
+                    Console.WriteLine("typeof({0}), obj={1}", a.GetType().ToString().Split(new char[] { '.' }).Last(), a.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                outs.SendToOutPut("Error:" + ex.Message);
+            }
+
+        }
+
     }
 }

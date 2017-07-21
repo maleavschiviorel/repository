@@ -8,7 +8,9 @@ namespace LinQAdvanced.Classes
 {
     public class Entity : IComparable<Entity>, IEquatable<Entity>, IComparable, IEquatable<object>
     {
-        public int Id;
+        public int Id { get; set; }
+
+        public string Name { get; set; }
 
         public int CompareTo(object obj)
         {

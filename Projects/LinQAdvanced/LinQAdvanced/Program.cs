@@ -53,7 +53,18 @@ namespace LinQAdvanced
             // tlinq.ElementAtElementAtOrDefault();
             //tlinq.DefaultIfEmpty();
             //tlinq.CountLongCount();
-            tlinq.MinMax();
+            //tlinq.MinMax();
+            //tlinq.SumAverage();
+            // tlinq.Agregate();
+            //tlinq.Contains();
+            //tlinq.Any();
+            //tlinq.All();
+            //tlinq.SequanceEqual();  
+            // tlinq.Empty();
+            //tlinq.Repeat();
+            //tlinq.Range();
+            //tlinq.Closure();
+            tlinq.Closure1();  
             Console.ReadLine();
         }
     }

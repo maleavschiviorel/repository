@@ -2,8 +2,6 @@
 {
     public class Material : Entity
     {
-        public string Name { get; set; }
-
         public Vendor Vendor { get; set; }
 
         public string VendorName { get; set; }
