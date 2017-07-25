@@ -1,7 +1,7 @@
 ﻿#define VisualStudio2017
 using System;
 using System.Linq;
-using LinQAdvanced.Classes;
+using LinQAdvanced.ClassesAndStructs;
 using System.Collections.Generic;
 
 namespace LinQAdvanced

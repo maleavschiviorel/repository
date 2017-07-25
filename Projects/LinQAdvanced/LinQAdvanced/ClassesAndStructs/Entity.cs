@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinQAdvanced.Classes
+namespace LinQAdvanced.ClassesAndStructs
 {
     public class Entity : IComparable<Entity>, IEquatable<Entity>, IComparable, IEquatable<object>
     {

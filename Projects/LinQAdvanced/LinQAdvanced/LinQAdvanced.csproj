@@ -42,9 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Entity.cs" />
-    <Compile Include="Classes\Material.cs" />
-    <Compile Include="Classes\Vendor.cs" />
+    <Compile Include="ClassesAndStructs\Entity.cs" />
+    <Compile Include="ClassesAndStructs\Material.cs" />
+    <Compile Include="ClassesAndStructs\StructEntity.cs" />
+    <Compile Include="ClassesAndStructs\Vendor.cs" />
     <Compile Include="ConditionToCompare.cs" />
     <Compile Include="LinQEngine.cs" />
     <Compile Include="LinqEngineForString.cs" />

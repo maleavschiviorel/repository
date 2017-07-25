@@ -1,4 +1,4 @@
-﻿namespace LinQAdvanced.Classes
+﻿namespace LinQAdvanced.ClassesAndStructs
 {
     public class Material : Entity
     {
