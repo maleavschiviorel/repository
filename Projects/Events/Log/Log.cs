@@ -9,15 +9,16 @@ namespace Log
         private System.IO.StreamWriter sw_error;
         private System.IO.StreamWriter sw_succes;
         private static Log log = null;
+       
         public static Log GetTheLog()
         {
-            if (log == null)
-            {
-                log = new Log();
-                return log;
-            }
-            else
-                return log;
+           return MyInternalClass._log;
+        }
+        private class MyInternalClass
+        {
+            internal readonly  static Log _log = new Log();//se indeplineste o singura data pentru membrii statici
+            static MyInternalClass() { }
+
         }
         private Log()
         {

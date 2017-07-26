@@ -3,13 +3,14 @@
 {
     public class Entity
     {
-        private int id = -1;
         public int Id
         {
-            get { return id; }
-            set { id = value; }
+            get;
+            private set;
         }
-        public virtual Entity Asign(Entity  from)
+        public Entity(int id)
+        { Id = id; }
+        public virtual Entity Asign(Entity from)
         {
             this.Id = from.Id;
             return this;

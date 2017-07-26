@@ -10,19 +10,19 @@ namespace LinQAdvanced
 {
     public class WorkWithTypes
     {
-        public void TryChangeValueTypes(int i, StructEntity structEntity)
+        private void TryChangeValueTypes(int i, StructEntity structEntity)
         {
             i = 15;
             structEntity.Id = 10;
             structEntity.Name = "Struct Entity  NewName";
         }
-        public void TryChangeValueTypesSentByRef(ref int i, ref StructEntity structEntity)
+        private void TryChangeValueTypesSentByRef(ref int i, ref StructEntity structEntity)
         {
             i = 15;
             structEntity.Id = 10;
             structEntity.Name = "Struct Entity  NewName";
         }
-        public void TryChangeValueTypesSentByOut(out int i, out StructEntity structEntity)
+        private void TryChangeValueTypesSentByOut(out int i, out StructEntity structEntity)
         {
             //i = 15;
             //structEntity.Id = 10;// da eroare:  use of unassigned out parameter 'structEntity' 
@@ -33,7 +33,7 @@ namespace LinQAdvanced
             structEntity.Id = 10;
             structEntity.Name = "Struct Entity  NewName";
         }
-        public void TryChangeReferenceTypes(Entity structEntity)
+        private void TryChangeReferenceTypes(Entity structEntity)
         {
             structEntity.Id = 100;
             structEntity.Name = "Class Entity Object NewName";
@@ -72,7 +72,7 @@ namespace LinQAdvanced
             TryChangeValueTypesSentByOut(out intValue, out structEntityValue);
             Console.WriteLine("after TryChangeValueTypesSentByOut intValue={0}; structEntityValue=Id={1},Name={2}", intValue, structEntityValue.Id, structEntityValue.Name);
         }
-        private ArrayList SortArrayOfIntegersUsingBubleSorting(ArrayList arr)
+        public static ArrayList SortArrayOfIntegersUsingBubleSorting(ArrayList arr)
         {
             bool wassorted = false;
             object tempvalue;
@@ -109,7 +109,7 @@ namespace LinQAdvanced
             }
             Console.WriteLine();
             ArrayList arrayListOfInt = new ArrayList(arrayOfInt);
-            SortArrayOfIntegersUsingBubleSorting(arrayListOfInt);
+            WorkWithTypes.SortArrayOfIntegersUsingBubleSorting(arrayListOfInt);
 
             try
             {
@@ -186,6 +186,10 @@ namespace LinQAdvanced
             WorkWithTypes workWithTypes = new WorkWithTypes();
             // MyFunction();eroare (MyFunction nu este statica) cere sa fie creat un obiect ca apoi sa fie chemat din obiect 
             workWithTypes.WorkingWithBoxingUnboxing();
+            //workWithTypes.WorkWithValueTypes(); 
+            //workWithTypes.WorkWithReferenceTypes();
+            //workWithTypes.WorkWithValueTypesSentByRef();
+            workWithTypes.WorkWithValueTypesSentByOut(); 
             Console.ReadLine();
         }
         private void MyFunction()

@@ -870,7 +870,7 @@ namespace LinQAdvanced
             }
             try
             {
-                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).Any(x => x.Id == 0);
+                var res = linqEngine1.Concat(vendors1, vendors2, condition1).Concat(matetials).All(x => x.Id == 0);
                 outs.SendToOutPut(string.Format("all entities have id==0: {0}", res));
             }
             catch (Exception ex)
