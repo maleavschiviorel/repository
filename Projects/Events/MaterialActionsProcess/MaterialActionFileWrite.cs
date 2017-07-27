@@ -27,7 +27,7 @@ namespace MaterialActionsProcess
         }
         public void UnregisterOperationHandler(MateriaActionsProcessor map)
         {
-             map.MaterialOperationEvent -= MaterialOperationHandler;
+             map.MaterialOperationEvent. -= MaterialOperationHandler;
             //System.Windows.WeakEventManager<MateriaActionsProcessor, MaterialActionArgs>.RemoveHandler(map, "MaterialOperationEvent", MaterialOperationHandler);
            
         }

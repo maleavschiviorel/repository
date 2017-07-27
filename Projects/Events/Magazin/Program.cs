@@ -13,7 +13,7 @@ namespace Magazin
         static void Main(string[] args)
         {
             MaterialFactory materialFactory = MaterialFactory.GetMaterialFactory;
-            GenericRepository<Entity> gr = GenericRepository<Entity>.Repository;
+            GenericRepository<Entity> gr = new GenericRepository<Entity>();//  GenericRepository<Entity>.Repository;
             MaterialActionsProcess.MateriaActionsProcessor materiaActionsProcessor = new MaterialActionsProcess.MateriaActionsProcessor();
             MaterialActionsProcess.MaterialActionFileWrite materialActionFileWriter = new MaterialActionsProcess.MaterialActionFileWrite(materiaActionsProcessor);
             MaterialOperator.SetMaterialActionsProcessor(materiaActionsProcessor);
