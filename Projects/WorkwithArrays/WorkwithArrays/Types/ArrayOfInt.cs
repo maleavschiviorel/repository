@@ -1,13 +1,13 @@
 ﻿using MyListGeneric;  
 namespace WorkwithArrays
 {
-    public class ArrOfInt : MyList<int>
+    public class ArrayOfInt : MyList<int>
     {
-        public ArrOfInt(MyList<int> arr) : base(arr)
+        public ArrayOfInt(MyList<int> arr) : base(arr)
         { }
-        public ArrOfInt(int[] arr) : base(arr)
+        public ArrayOfInt(int[] arr) : base(arr)
         { }
-        public ArrOfInt() : base()
+        public ArrayOfInt() : base()
         { }
         public int IndexOf(int tofind)
         {

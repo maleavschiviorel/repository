@@ -5,7 +5,7 @@ using WorkwithArrays;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class StringProcessorTest
+    public class StringOperatorTest
     {
         class TestStringReader : IStringReader
         {
@@ -19,18 +19,18 @@ namespace UnitTestProject1
         public void TestMethod1()
         {
             var stringReader = new TestStringReader();
-            var stringProcessor = new StringProcessor();
+            var stringOperator = new StringOperator();
 
-            var processor = new TestStringProcessor(stringReader, stringProcessor);
-            processor.CountDifferent();  
+            var operatorObj = new TestStringOperator(stringReader, stringOperator);
+            operatorObj.CountDifferent();  
         }
 
         [TestMethod]
         //[ExpectedException(typeof(ArgumentNullException))]
         public void CountDifferent_ReturnsCorrectCountOfDifferentChars()
         {
-            var stringProcessor = new StringProcessor();
-            var count = stringProcessor.CountDifferent("test string 1");
+            var stringOperator = new StringOperator();
+            var count = stringOperator.CountDifferent("test string 1");
             Assert.AreEqual(9, count);
         }
 

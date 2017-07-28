@@ -3,7 +3,7 @@ using MyListGeneric;
 
 namespace WorkwithArrays
 {
-    public class Class1
+    public class ArrayOperator
     {
         /// <summary>
         /// Enter elements in array
@@ -12,7 +12,7 @@ namespace WorkwithArrays
         public static int[] EnterArray()
         {
             Console.WriteLine("Enter numbers of array, first occurance of literall will finish entering elements!");
-            ArrOfInt arr = new ArrOfInt();
+            ArrayOfInt arr = new ArrayOfInt();
             string str = Console.ReadLine();
             int n = 0;
             while (int.TryParse(str, out n))
@@ -69,7 +69,7 @@ namespace WorkwithArrays
         /// <returns></returns>
         public static int[] DeleteExceptFirst(int[] arr)
         {
-            ArrOfInt arr1 = new ArrOfInt(arr);
+            ArrayOfInt arr1 = new ArrayOfInt(arr);
             for (int i = 0; i < arr1.Length(); i++)
             {
                 if (arr1.IndexOf(i + 1, arr1[i]) != -1)
@@ -84,7 +84,7 @@ namespace WorkwithArrays
         /// <returns></returns>
         public static int[] InsertBetweenPairs(int[] arr, int toadd)
         {
-            ArrOfInt arr1 = new ArrOfInt(arr);
+            ArrayOfInt arr1 = new ArrayOfInt(arr);
             for (int i = 0; i < arr1.Length() - 1; i++)
             {
                 if (arr1[i] < 0 && arr1[i + 1] == 0 || arr1[i] == 0 && arr1[i + 1] < 0 || arr1[i] != 0 && arr1[i + 1] != 0 && arr1[i] / (Math.Abs(arr1[i])) * arr1[i + 1] / (Math.Abs(arr1[i + 1])) < 0)
@@ -102,7 +102,7 @@ namespace WorkwithArrays
         /// <returns></returns>
         public static int[] CompressDeleteZeroValue(int[] arr)
         {
-            ArrOfInt arr1 = new ArrOfInt(arr);
+            ArrayOfInt arr1 = new ArrayOfInt(arr);
             for (int i = 0; i < arr1.Length(); i++)
             {
                 if (arr1[i] == 0)
@@ -116,7 +116,7 @@ namespace WorkwithArrays
 
         public static void ShowElements(int[] arr)
         {
-            ArrOfInt arr1 = new ArrOfInt(arr);
+            ArrayOfInt arr1 = new ArrayOfInt(arr);
             for (int i = 0; i < arr1.Length(); i++)
             {
                 Console.Write(arr[i]);

@@ -2,7 +2,6 @@
 #define IEquatable
 using System;
 namespace MyListGeneric
-
 {
     public class MyList<T>
 #if useclass        

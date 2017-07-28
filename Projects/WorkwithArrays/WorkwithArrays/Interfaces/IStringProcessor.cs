@@ -1,6 +1,6 @@
 ﻿namespace WorkwithArrays
 {
-    public interface IStringProcessor
+    public interface IStringOperator
     {
         string InsertXafterEachY(string str, char tofind, char toadd);
         string MixUp(string str);

@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace WorkwithArrays
 {
-    public class TestStringProcessor
+    public class TestStringOperator
     {
         IStringReader _stringReader;
-        IStringProcessor _stringProcessor;
+        IStringOperator _stringOperator;
 
-        public TestStringProcessor(IStringReader stringReader, IStringProcessor stringProcessor)
+        public TestStringOperator(IStringReader stringReader, IStringOperator stringOperator)
         {
             _stringReader = stringReader;
-            _stringProcessor = stringProcessor;
+            _stringOperator = stringOperator;
         }
 
         public void CountDifferent()
         {
             var str = _stringReader.Read();
-            int c = _stringProcessor.CountDifferent(str);
+            int c = _stringOperator.CountDifferent(str);
 
             Console.WriteLine("Count number of different characters in the string\r\n{0}", c);
         }
@@ -31,42 +31,42 @@ namespace WorkwithArrays
             Console.WriteLine("Count full number of occurrences of <x> and <y> characters; ");
             Console.Write("Enter x="); char x = Console.ReadLine()[0]; Console.WriteLine();
             Console.Write("Enter y="); char y = Console.ReadLine()[0];
-            int c = _stringProcessor.CountFull(str, x, y);
+            int c = _stringOperator.CountFull(str, x, y);
             Console.WriteLine("full number of occurrences of <{0}> and <{1}> characters is {2}", x, y, c);
         }
         public void CountSumOfDigits()
         {
             string str = _stringReader.Read();
             Console.WriteLine("Count the sum of all digits occurred in the string; ");
-            long c = _stringProcessor.CountSumOfDigits(str);
+            long c = _stringOperator.CountSumOfDigits(str);
             Console.WriteLine("Sum of all digits occurred in the string is {0}", c);
         }
         public void CountSumOfNumbers()
         {
             string str = _stringReader.Read();
             Console.WriteLine("Count the sum of all numbers occurred in the string");
-            double c = _stringProcessor.CountSumOfNumbers(str);
+            double c = _stringOperator.CountSumOfNumbers(str);
             Console.WriteLine("sum of all numbers occurred in the string is {0}", c);
         }
         public void DeleteFromCurlyBraces()
         {
             string str = _stringReader.Read();
             Console.WriteLine("Delete all characters inside the curly braces; ");
-            str = _stringProcessor.DeleteFromCurlyBraces(str);
+            str = _stringOperator.DeleteFromCurlyBraces(str);
             Console.WriteLine("Result string is = {0}", str);
         }
         public void DeleteFromParanthesize()
         {
             string str = _stringReader.Read();
             Console.WriteLine("Delete all characters inside the parenthesize.  ");
-            str = _stringProcessor.DeleteFromParanthesize(str);
+            str = _stringOperator.DeleteFromParanthesize(str);
             Console.WriteLine("Result string is = {0}", str);
         }
         public void DeleteMiddle()
         {
             string str = _stringReader.Read();
             Console.WriteLine("Delete the middle character if string length is odd or two middle characters if string length is even");
-            str = _stringProcessor.DeleteMiddle(str);
+            str = _stringOperator.DeleteMiddle(str);
             Console.WriteLine("Result string is = {0}", str);
         }
         public void DeleteSustr()
@@ -75,7 +75,7 @@ namespace WorkwithArrays
             string str = _stringReader.Read();
             Console.WriteLine("Enter substring");
             string substr = _stringReader.Read();
-            str = _stringProcessor.DeleteSustr(str, substr);
+            str = _stringOperator.DeleteSustr(str, substr);
             Console.WriteLine("Result string is = {0}", str);
         }
 
@@ -84,7 +84,7 @@ namespace WorkwithArrays
             Console.WriteLine("Delete all occurrences of  the character <x>; ");
             string str = _stringReader.Read();
             Console.Write("Enter x="); char c = (char)Console.Read(); Console.WriteLine();
-            str = _stringProcessor.DeleteX(str, c);
+            str = _stringOperator.DeleteX(str, c);
             Console.WriteLine("Result string is = {0}", str);
         }
 
@@ -92,14 +92,14 @@ namespace WorkwithArrays
         {
             Console.WriteLine("Display all characters before the first colon occurrence in the string");
             string str = _stringReader.Read();
-            str = _stringProcessor.DisplayCharsB(str);
+            str = _stringOperator.DisplayCharsB(str);
             Console.WriteLine("Result string is = {0}", str);
         }
         public void DisplayCharsA()
         {
             Console.WriteLine("Display all characters after the first colon occurrence in the string;  ");
             string str = _stringReader.Read();
-            str = _stringProcessor.DisplayCharsA(str);
+            str = _stringOperator.DisplayCharsA(str);
             Console.WriteLine("Result string is = {0}", str);
         }
 
@@ -107,14 +107,14 @@ namespace WorkwithArrays
         {
             Console.WriteLine("Count and display statistics of character occurrences in the string. ");
             string str = _stringReader.Read();
-            _stringProcessor.DisplayStatstics(str);
+            _stringOperator.DisplayStatstics(str);
         }
         public void DoubleX()
         {
             Console.WriteLine("Double every occurrence of the indicated character <x>;");
             string str = _stringReader.Read();
             Console.Write("Enter x="); char x = (char)Console.Read(); Console.WriteLine();
-            str = _stringProcessor.DoubleX(str, x);
+            str = _stringOperator.DoubleX(str, x);
             Console.WriteLine("Result string is = {0}", str);
         }
         public void FirstAndLast()
@@ -123,14 +123,14 @@ namespace WorkwithArrays
             string str = _stringReader.Read();
             Console.Write("Enter x="); char x = (char)Console.Read(); Console.WriteLine();
             int f = -1; int l = -1;
-            _stringProcessor.FirstAndLast(str, x, out f, out l);
+            _stringOperator.FirstAndLast(str, x, out f, out l);
             Console.WriteLine("First and the last occurrences of the character<{0}> are f={1} and l={2}", x, f, l);
         }
         public void Hasadjacentcaracters()
         {
             Console.WriteLine("Find out if the string has two adjacent identical characters;  ");
             string str = _stringReader.Read();
-            bool flag = _stringProcessor.Hasadjacentcaracters(str);
+            bool flag = _stringOperator.Hasadjacentcaracters(str);
             if (flag)
                 Console.WriteLine("Has two adjacent identical characters");
             else
@@ -143,7 +143,7 @@ namespace WorkwithArrays
             string str = _stringReader.Read();
             Console.Write("Enter x="); char x = (char)Console.ReadLine()[0]; Console.WriteLine();
             Console.Write("Enter y="); char y = (char)Console.ReadLine()[0];
-            str = _stringProcessor.InsertXafterEachY(str, y, x);
+            str = _stringOperator.InsertXafterEachY(str, y, x);
             Console.WriteLine("Result string is = {0}", str);
         }
 
@@ -151,7 +151,7 @@ namespace WorkwithArrays
         {
             Console.WriteLine("Mix up the first character with the second one, the third character with the fourth one etc. ");
             string str = _stringReader.Read();
-            str = _stringProcessor.MixUp(str);
+            str = _stringOperator.MixUp(str);
             Console.WriteLine("Result string is = {0}", str);
         }
 
@@ -161,7 +161,7 @@ namespace WorkwithArrays
             string str = _stringReader.Read();
             Console.Write("Enter x="); char x = (char)Console.ReadLine()[0]; Console.WriteLine();
             Console.Write("Enter y="); char y = (char)Console.ReadLine()[0];
-            int i = _stringProcessor.MoreOften(str, x, y);
+            int i = _stringOperator.MoreOften(str, x, y);
             if(i==0)
             Console.WriteLine("character {0} is more often",x);
             else
@@ -175,19 +175,32 @@ namespace WorkwithArrays
         {
             Console.WriteLine("Replace all groups of adjacent dots with ellipsis;  ");
             string str = _stringReader.Read();
-            str = _stringProcessor.ReplaceAdjacentDotsWith(str, "...");
+            str = _stringOperator.ReplaceAdjacentDotsWith(str, "...");
             Console.WriteLine("Result string is = {0}", str);
         }
         public void ReplaceSubstr1WithSubstr2()
         {
-            Console.WriteLine("Replace all groups of adjacent dots with ellipsis;  ");
+            Console.WriteLine("Replace Substr1 With Substr2");
             string str = _stringReader.Read();
             Console.WriteLine("Enter substring1");
             string substr1 = _stringReader.Read();
             Console.WriteLine("Enter substring2");
             string substr2 = _stringReader.Read();
-            str = _stringProcessor.ReplaceSubstr1WithSubstr2(str, substr1, substr2);
+            str = _stringOperator.ReplaceSubstr1WithSubstr2(str, substr1, substr2);
             Console.WriteLine("Result string is = {0}", str);
+        }
+        public void ReplaceSubstr1WithSubstr2UsingStrinBuilder()
+        {
+            Console.WriteLine("Replace Substr1 With Substr2");
+            string str = _stringReader.Read();
+            Console.WriteLine("Enter substring1");
+            string substr1 = _stringReader.Read();
+            Console.WriteLine("Enter substring2");
+            string substr2 = _stringReader.Read();
+            StringBuilder strBuilder = new StringBuilder(str); 
+            str = strBuilder.Replace(substr1, substr2).ToString() ;
+            Console.WriteLine("Result string is = {0}", str);
+
         }
     }
 }

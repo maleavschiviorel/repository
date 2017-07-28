@@ -9,12 +9,6 @@ namespace Magazin
 {
     public class GenericRepository<T> : IRepository<T> where T : Entity
     {
-        //private static Lazy<GenericRepository<T>> _lazy = new Lazy<GenericRepository<T>>(() => new GenericRepository<T>(), true);
-        //public static GenericRepository<T> Repository
-        //{
-        //    get { return _lazy.Value; }
-        //}
-
         private List<T> _storage;
         public GenericRepository()
         {

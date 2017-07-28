@@ -2,7 +2,7 @@
 
 namespace WorkwithArrays
 {
-    public class Class2
+    public class MatrixOperator
     {
         /// <summary>
         /// Enter elements in matrix

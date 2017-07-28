@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{465ED360-B166-4195-B150-948AE3C2FD90}</ProjectGuid>
+    <ProjectGuid>{0FF0ACCD-F742-4FEC-B087-6A5342B19852}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Magazin</RootNamespace>
-    <AssemblyName>Magazin</AssemblyName>
+    <RootNamespace>CSharpFeatutes</RootNamespace>
+    <AssemblyName>CSharpFeatutes</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,30 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericRepository.cs" />
-    <Compile Include="IMaterialFactory.cs" />
-    <Compile Include="MaterialFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MaterialActionsProcess\MaterialActionsProcess.csproj">
-      <Project>{b1b1219c-e246-45d8-a925-03501db55a94}</Project>
-      <Name>MaterialActionsProcess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Materials\Materials.csproj">
-      <Project>{010e0910-5235-4778-af5c-0090c0ccbcb7}</Project>
-      <Name>Materials</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyListGeneric\MyListGeneric.csproj">
-      <Project>{c96a60d6-7faf-4253-8020-bf56b717e6b4}</Project>
-      <Name>MyListGeneric</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

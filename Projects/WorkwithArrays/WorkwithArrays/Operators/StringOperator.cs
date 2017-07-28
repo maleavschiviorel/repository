@@ -27,7 +27,7 @@ namespace WorkwithArrays
     //19.	delete all characters inside the curly braces; 
     //20.	count and display statistics of character occurrences in the string. 
 
-    public class StringProcessor : IStringProcessor
+    public class StringOperator : IStringOperator
     {
 
         /// <summary>
@@ -403,6 +403,7 @@ namespace WorkwithArrays
                 Console.WriteLine("count('{0}')={1}", c, stat[c]);
             }
         }
+      
     }
 
 }

@@ -16,15 +16,15 @@ namespace WorkwithArrays
             ////4.Insert new element between all element pairs with different signs.
             ////5.  + Compress array by deleting all zero - value elements.
 
-            //TestClass1.EnterElements();
+            //TestArrayOperator.EnterElements();
             ////----------------------------------------------------------------------------
-            //TestClass1.DeleteEvenNumbers();
+            //TestArrayOperator.DeleteEvenNumbers();
             ////----------------------------------------------------------------------------
-            //TestClass1.InsertNewElement();
+            //TestArrayOperator.InsertNewElement();
             //////----------------------------------------------------------------------------
-            //TestClass1.InsertNewElement1();
+            //TestArrayOperator.InsertNewElement1();
             ////----------------------------------------------------------------------------
-            //TestClass1.Compress();
+            //TestArrayOperator.Compress();
 
             //1.  + Insert new line after line containing the first occurrence of the minimal element. 
             //2.Insert new column before all columns containing the indicated number.
@@ -33,46 +33,48 @@ namespace WorkwithArrays
             //5.Delete from array the k - th line and the j-th column if their values coincide.
             //6.  + Compress array by deleting all only zero-value lines and columns.
 
-            //TestClass2.EnterElements();
+            //TestMatrixOperator.EnterElements();
             //----------------------------------------------------------------------------
-            //TestClass2.InsertNewLine();
+            //TestMatrixOperator.InsertNewLine();
             ////----------------------------------------------------------------------------
-           // TestClass2.InsertNewColumn();
+            // TestMatrixOperator.InsertNewColumn();
             //////----------------------------------------------------------------------------
-            //TestClass2.DeleteLinesWithEven();
+            //TestMatrixOperator.DeleteLinesWithEven();
             ////----------------------------------------------------------------------------
-            //TestClass2.DeleteColumnsPositive();
+            //TestMatrixOperator.DeleteColumnsPositive();
             ////----------------------------------------------------------------------------
-           // TestClass2.DeleteLinesColumnsEqual();
+            // TestMatrixOperator.DeleteLinesColumnsEqual();
             ////----------------------------------------------------------------------------
-            TestClass2.Compress();
+            //TestMatrixOperator.Compress();
+            TestMatrixOperator.WorkWithMultidimensionalArray(); 
 
             //--------------------------------------------------------------------------------
             //--------------------------------------------------------------------------------
             var stringReader = new ConsoleStringReader();
-            var stringProcessor = new StringProcessor();
-            var processor = new TestStringProcessor(stringReader, stringProcessor);
+            var stringOperator = new StringOperator();
+            var operatorObj = new TestStringOperator(stringReader, stringOperator);
 
-            // processor.CountDifferent();
-            //processor.CountFull();
-            //processor.CountSumOfDigits();
-            //processor.CountSumOfNumbers();  
-            //processor.DeleteFromCurlyBraces();  
-            //processor.DeleteFromParanthesize();  
-            //processor.DeleteMiddle();
-            //processor.DeleteSustr(); 
-            //processor.DeleteX();
-            //processor.DisplayCharsA();
-            //processor.DisplayCharsB();
-            //processor.DisplayStatstics();
-            //processor.DoubleX();
-            //processor.FirstAndLast();
-            //processor.Hasadjacentcaracters();
-            //processor.InsertXafterEachY();
-            //processor.MixUp();  
-            //processor.MoreOften();  
-            //processor.ReplaceAdjacentDotsWith();
-            //processor.ReplaceSubstr1WithSubstr2(); 
+            // operatorObj.CountDifferent();
+            // operatorObj.CountFull();
+            // operatorObj.CountSumOfDigits();
+            // operatorObj.CountSumOfNumbers();  
+            // operatorObj.DeleteFromCurlyBraces();  
+            // operatorObj.DeleteFromParanthesize();  
+            // operatorObj.DeleteMiddle();
+            // operatorObj.DeleteSustr(); 
+            // operatorObj.DeleteX();
+            // operatorObj.DisplayCharsA();
+            // operatorObj.DisplayCharsB();
+            // operatorObj.DisplayStatstics();
+            // operatorObj.DoubleX();
+            // operatorObj.FirstAndLast();
+            // operatorObj.Hasadjacentcaracters();
+            // operatorObj.InsertXafterEachY();
+            // operatorObj.MixUp();  
+            // operatorObj.MoreOften();  
+            // operatorObj.ReplaceAdjacentDotsWith();
+             //operatorObj.ReplaceSubstr1WithSubstr2();
+            operatorObj.ReplaceSubstr1WithSubstr2UsingStrinBuilder();
 
             Console.ReadLine();
         }
