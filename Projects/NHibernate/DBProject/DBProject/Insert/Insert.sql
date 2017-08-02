@@ -1,0 +1,135 @@
+﻿--INSERT INTO TypeOfMesure ([type])
+--     VALUES  ('m3')
+--INSERT INTO TypeOfMesure ([type])
+--     VALUES  ('m2')
+
+-- INSERT INTO TypeOfMesure ([type])
+--     VALUES  ('l')
+-- INSERT INTO TypeOfMesure ([type])
+--     VALUES  ('kg')
+--INSERT INTO TypeOfMesure ([type])
+--     VALUES  ('piece')
+--	 ------------------------
+	
+--	INSERT INTO [dbo].[TypeOfMaterial]
+--           ([type])
+--     VALUES
+--           ('organic')
+-- INSERT INTO [dbo].[TypeOfMaterial]
+--           ([type])
+--     VALUES
+--           ('synthetic')
+-- INSERT INTO [dbo].[TypeOfMaterial]
+--           ([type])
+--     VALUES
+--           ('chemical')
+-- ------------------------------
+--INSERT INTO [dbo].[Materials]
+--           ([name]
+--           ,[TypeOfMaterial_Id]
+--           ,[TypeOfMesure_id])
+--     VALUES
+--           ('water',
+--           1,
+--           3)
+
+--		   INSERT INTO [dbo].[Materials]
+--           ([name]
+--           ,[TypeOfMaterial_Id]
+--           ,[TypeOfMesure_id])
+--     VALUES
+--           ('tomato',
+--           1,
+--           4)
+--	   INSERT INTO [dbo].[Materials]
+--           ([name]
+--           ,[TypeOfMaterial_Id]
+--           ,[TypeOfMesure_id])
+--     VALUES
+--           ('potato',
+--           1,
+--           4)
+----------------------
+--INSERT INTO [dbo].[Rights]
+--           ([name])
+--     VALUES
+--           ('read')
+-- INSERT INTO [dbo].[Rights]
+--           ([name])
+--     VALUES
+--           ('write')
+--INSERT INTO [dbo].[Rights]
+--           ([name])
+--     VALUES
+--           ('update')
+-- INSERT INTO [dbo].[Rights]
+--           ([name])
+--     VALUES
+--           ('delete')
+
+-----------
+--INSERT INTO [dbo].[UserRole]
+--           ([name])
+--     VALUES
+--           ('quest')
+--INSERT INTO [dbo].[UserRole]
+--           ([name])
+--     VALUES
+--           ('user')
+--INSERT INTO [dbo].[UserRole]
+--           ([name])
+--     VALUES
+--           ('operator')
+--INSERT INTO [dbo].[UserRole]
+--           ([name])
+--     VALUES
+--           ('admin')
+---------------------------
+--INSERT INTO [dbo].[RoleRights]
+--           ([UserRole_id]
+--           ,[Rights_id])
+--     VALUES
+--           (1,
+--           1)
+--INSERT INTO [dbo].[RoleRights]
+--           ([UserRole_id]
+--           ,[Rights_id])
+--     VALUES
+--           (2,
+--           1)
+--INSERT INTO [dbo].[RoleRights]
+--           ([UserRole_id]
+--           ,[Rights_id])
+--     VALUES
+--           (3,
+--           1)
+--INSERT INTO [dbo].[RoleRights]
+--           ([UserRole_id]
+--           ,[Rights_id])
+--     VALUES
+--           (3,
+--           2)
+--INSERT INTO [dbo].[RoleRights]
+--           ([UserRole_id]
+--           ,[Rights_id])
+--     VALUES
+--           (4,
+--           1)
+--INSERT INTO [dbo].[RoleRights]
+--           ([UserRole_id]
+--           ,[Rights_id])
+--     VALUES
+--           (4,
+--           2)
+--INSERT INTO [dbo].[RoleRights]
+--           ([UserRole_id]
+--           ,[Rights_id])
+--     VALUES
+--           (4,
+--           3)
+--INSERT INTO [dbo].[RoleRights]
+--           ([UserRole_id]
+--           ,[Rights_id])
+--     VALUES
+--           (4,
+--           4)

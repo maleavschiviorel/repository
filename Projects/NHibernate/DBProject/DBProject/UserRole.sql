@@ -1,0 +1,1 @@
+﻿create table UserRole(id int primary key identity(1,1), name nvarchar(50))
