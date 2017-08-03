@@ -59,6 +59,7 @@
     <Folder Include="Properties" />
     <Folder Include="Insert" />
     <Folder Include="Drop" />
+    <Folder Include="Select" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="TypeOfMaterial.sql" />
@@ -70,9 +71,12 @@
     <Build Include="Persons.sql" />
     <Build Include="Users.sql" />
     <Build Include="Stock.sql" />
-    <Build Include="Operations.sql" />
+    <Build Include="Orders.sql" />
     <Build Include="Currencies.sql" />
     <Build Include="Insert\Insert.sql" />
     <None Include="Drop\drop.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Select\select.sql" />
   </ItemGroup>
 </Project>
