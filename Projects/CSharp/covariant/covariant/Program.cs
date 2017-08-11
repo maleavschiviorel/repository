@@ -6,33 +6,6 @@ using System.Threading.Tasks;
 
 namespace covariant
 {
- 
-    public class Food
-    { }
-    public class Pizza:Food
-    { }
-    public class Salad : Food
-    { }
-
-    public interface IFactory<out T>
-    { T Create(); }
-
-    public class FoodFactory : IFactory<Food>
-    {
-        public Food Create()
-        {
-            return new Food();
-        }
-    }
-    public class PizzaFactory : IFactory<Pizza>
-    {
-        public Pizza Create()
-        {
-            return new Pizza();
-        }
-
-       
-    }
     class Program
     {
         static void Main(string[] args)
