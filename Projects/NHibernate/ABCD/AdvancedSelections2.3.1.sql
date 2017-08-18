@@ -49,7 +49,7 @@ using
 							group by state, [rank]
 						) as scr1 on sc.state=scr1.state
 
-when matched and scr1.rank=1 then update-- sursa si destinatia au acelasi tind cu sc.state=scr1.state
+when matched and scr1.rank=1 then update-- sursa si destinatia au acelasi rind cu sc.state=scr1.state
 
 set sc.city=scr1.maxcity
 
