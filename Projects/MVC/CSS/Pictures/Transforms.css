@@ -1,0 +1,20 @@
+﻿body {
+  background: #ffffff url(bg.png) no-repeat;
+}
+div {
+  position : absolute;
+  width : 500px;
+  height : 200px;
+ }
+#rotate {
+  transform : rotate(20deg);
+  background : #00ffcc;
+  top : 100px;
+  left : 50px;
+} 
+#scale {
+  transform : scale(0.5);
+  background : #ccff00;
+  top : 400px;
+  left : 50px;
+}

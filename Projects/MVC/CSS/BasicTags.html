@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>This title will be shown in the browser</title>
+	<meta charset="utf-8" />
+    <style type="text/css">
+        td {
+            height: 100px;
+            width: 100px;
+        }
+
+        .one {
+            background-color: #efefef;
+        }
+
+        .two {
+            background-color: #999999;
+        }
+
+        .three {
+            background-color: #000000;
+        }
+        thead, tfoot {background-color:#d6d6d6;}
+    </style>
+</head>
+<body>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+
+    <h1>Basic Text Formatting</h1>
+    <p> This section is going to address the way in which you mark up text. Almost every document you create will contain some form of text, so this will be a very important section. </p>
+    <br /><br />
+    <h2>White Space and Flow</h2>
+    <p> Before you start to mark up your text, it is best to understand what HTML does when it comes across spaces and how browsers treat long sentences and paragraphs of text.</p>
+    <h2>Creating Headings</h2>
+    <p> No matter what sort of document you are creating, most documents have headings in some form or other...</p>
+
+    <p>The following text is written inside a &lt;pre&gt; element. Multiple spaces should be preserved and the line breaks should appear where they do in the source document.</p>
+<pre>
+function testFunction(strText){
+   console.log(strText) 
+}
+</pre>
+    <p>The content of the &lt;pre&gt; element is most likely displayed in a monospaced font.</p>
+
+    <h1>Block-Level Elements</h1>
+    <p>
+        <strong>Block-level elements</strong> always start on a new line. The
+        <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code> elements will not sit
+        on the same line, whereas the inline elements flow with the rest of the text.
+    </p>
+
+    <p>The following description of the blockquote element is taken from the WHATWG site:</p>
+    <blockquote> The blockquote element represents a section that is quoted from another source. Content inside a blockquote must be quoted from another source, whose address, if it has one, may be cited in the cite attribute.</blockquote>
+    <cite>Inside &lt;cite&gt; element</cite>
+    <p>As Dylan Thomas said, <q>Somebody's boring me. I think it's me</q>.</p>
+    <p>This presentation teaches you how mark up your documents for the web using <dfn>HTML</dfn>.</p>
+    <p><samp>This is the output from our test script.</samp></p>
+    <p>To force quit an application in Windows, hold down the <kbd>ctrl</kbd>, <kbd>alt</kbd> and <kbd>delete</kbd> keys together.</p>
+    <p><a href="http://www.Google.com/" title="Search the web with Google">Google</a> is a very popular search engine.</p>
+    <img src="Pictures/Amdaris.png" alt="Amdasris logo"><hr />
+    <a href="http://www.amdaris.com"><img src="Pictures/Amdaris.png" alt="Amdasris logo"></a>
+    <hr />
+
+    <ul>
+        <li>Bullet point number one</li>
+        <li>Bullet point number two</li>
+        <li>Bullet point number three</li>
+    </ul>
+
+    <ol type="a" start="4" reversed>
+        <li>Point number one</li>
+        <li>Point number two</li>
+        <li>Point number three</li>
+    </ol>
+
+    <dl>
+        <dt>Unordered List</dt>
+        <dd>A list of bullet points.</dd>
+        <dt>Ordered List</dt>
+        <dd>An ordered list of points, such as a numbered set of steps.</dd>
+        <dt>Definition List</dt>
+        <dd>A list of terms and definitions.</dd>
+    </dl>
+
+    <ol type="I">
+        <li>Item one</li>
+        <li>Item two</li>
+        <li>Item three</li>
+        <li>
+            Item four
+            <ol type="i">
+                <li>Item 4.1</li>
+                <li>Item 4.2</li>
+                <li>Item 4.3</li>
+            </ol>
+        </li>
+        <li>Item Five</li>
+    </ol>
+
+    <table border="1" align="left">
+        <tr>
+            <td>Row 1, Column 1</td>
+            <td>Row 1, Column 2</td>
+        </tr>
+        <tr>
+            <td>Row 2, Column 1</td>
+            <td>Row 2, Column 2</td>
+        </tr>
+    </table>
+    <table>
+        <caption>Spanning columns using the colspan attribute</caption>
+        <tr>
+            <td class="one">&nbsp;</td>
+            <td class="two">&nbsp;</td>
+            <td class="three">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="one">&nbsp;</td>
+            <td colspan="2" class="two">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="one">&nbsp;</td>
+        </tr>
+    </table>
+    <table border="1">
+        <tr>
+            <th></th>
+            <th>Morning</th>
+            <th>Afternoon</th>
+        </tr>
+        <tr>
+            <th>Saturday</th>
+            <td>Cycling</td>
+            <td>Fishing</td>
+        </tr>
+        <tr>
+            <th>Sunday</th>
+            <td>Rowing</td>
+            <td>
+                <table border="1">
+                    <tr>
+                        <th>Group 1</th>
+                        <th>Group 2</th>
+                    </tr>
+                    <tr>
+                        <td>Water skiing</td>
+                        <td>Wake boarding</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

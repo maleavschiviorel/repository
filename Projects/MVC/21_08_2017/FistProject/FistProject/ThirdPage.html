@@ -3,6 +3,36 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <script>
+        var q = 0;
+        
+        function changeborer()
+        {
+            document.getElementById('btn').style = "width:100px; height:100px;background-color:#cc0000;";
+            document.getElementById('btn').removeEventListener('click', changeborer, false);
+        }
+        function back()
+        {
+            history.back(); 
+        }
+        function onclick1()
+        {
+            var sc = { width1: screen.width, heigth1: screen.heigth };
+            sc.Availablewidth = screen.availWidth;
+            sc.hotname = window.location.hostname;
+            sc.url = window.location.url;
+            if (q == 0) {
+                q++;
+                document.getElementById('btn').addEventListener('click', changeborer, false);
+                document.getElementById('btn').addEventListener('click', back, false);
+
+            }
+            else
+            {
+                document.getElementById('btn').style = "width:100px; height:100px;background-color:#c0c0c0;";
+            }
+        }
+    </script>
 </head>
 <body>
     <div style="position: absolute;width: 1000px; height: 700px;">
@@ -10,7 +40,7 @@
         <hr/>
         
         <img style="width: 50%; height: 50%; border-style: solid; border-width: 2px 2px 2px 2px; " src="http://www.bing.com/az/hprichbg/rb/SchafstelzeHessen_ROW10447263069_1920x1080.jpg" />
-        
+        <button id="btn" style="width:100px; height:100px;" onclick=onclick1()></button>
         <div style="position: absolute;width: 900px; height: 20px; top:600px  ;">
             <a style="float: right;" href="FourthPage.html"><i>Next Page</i></a>
             <a style="float: left;" href="SecondPage.html"><i>Privious Page</i></a>

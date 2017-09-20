@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body>
-    <div style="position: absolute; width: 1000px; height: 700px;">
+<body >
+    <div style=" width: 1000px; height: 700px;">
         <h1>Presentation of HTML tags</h1>
         <h2>Presentation of HTML tags</h2>
         <h3>Presentation of HTML tags</h3>
@@ -14,7 +14,7 @@
         <h6>Presentation of HTML tags</h6>
         <hr />
 
-        <label>task:Write a text and format it using tags: b, i, u, s, h1, h2, h3, h4, h5, h6, br, hr, p</label>
+        <label onclick='changeborder(this);'>task:Write a text and format it using tags: b, i, u, s, h1, h2, h3, h4, h5, h6, br, hr, p</label>
         <br />
         <div style="padding-left: 40px; padding-top: 20px;" >
             <s><b>Hi <i>Admin</i>, wellcome to the <u>second</u> site made in CSHTML</b> </s>
@@ -24,7 +24,7 @@
             </p>
         </div>
 
-        <label>finished task: Write a text and format it using tags: b, i, u, s, h1, h2, h3, h4, h5, h6, br, hr, p</label>
+        <label onclick=" this.style='border-style:solid ;';">finished task: Write a text and format it using tags: b, i, u, s, h1, h2, h3, h4, h5, h6, br, hr, p</label>
         <br />
         <br />
 
@@ -32,6 +32,22 @@
         <div style="position: absolute; width: 900px; height: 20px; top:600px  ;">
             <a style="float: right ; " href="SecondPage.html"><i>Next Page</i></a>
         </div>
+        <div>
+
+        </div>
     </div>
+    <script> 
+        function changeborder(elem)
+        {
+            elem.style = 'border-style:solid';
+            if (navigator.cookieEnabled) {
+
+                document.body.innerHTML += "<><label >cookie are Enabled</label></br>";
+            }
+            else {
+                document.body.innerHTML += "<label >cookie are not Enabled</label></br>";
+            }
+        }
+    </script>
 </body>
 </html>

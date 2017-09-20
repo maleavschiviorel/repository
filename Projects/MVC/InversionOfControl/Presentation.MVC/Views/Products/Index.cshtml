@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@model IList<Domain.Dto.ProductManageDto>
+
+<h2>Index</h2>
+@foreach (var product in Model)
+{
+    <p>@product.ProductName - @product.Ranking</p>
+    {
+        var link = Url.Action("EditProduct", "Products");
+       var fullLInk =  link + $"?productId={product.ProductId}";
+        <a href="@fullLInk">Edit Product</a>
+     }
+
+}
+
+
+

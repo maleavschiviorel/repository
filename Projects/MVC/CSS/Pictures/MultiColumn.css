@@ -1,0 +1,15 @@
+﻿body {
+  background-color : #ffffff;
+}
+.fixed-width {
+  width:900px;
+  height:200px;
+  column-count: 2;
+  column-gap: 45px; 
+}
+.percentage-width {
+  width:100%;
+  height:200px;
+  column-width: 350px;
+  column-gap: 15px; 
+}

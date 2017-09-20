@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Employee Form</title>
+    <link href="Pictures/NewForm.css" rel="stylesheet" />
+    <style>
+        textarea:required:invalid, input:required:invalid {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Employee Application Form</h1>
+    <form id="applicationForm" action="#" onsubmit="return validateForm()">
+        <p><i>Please complete the form. Mandatory fields are marked with a </i><em>*</em></p>
+        <fieldset>
+            <legend>Contact Details</legend>
+            <label for="name">Name <em>*</em></label>
+            <input id="name" placeholder="Jane Smith" autofocus required><br>
+            <label for="telephone">Telephone</label>
+            <input id="telephone" placeholder="(xxx) xxx-xxxx"><br>
+            <label for="email">Email <em>*</em></label>
+            <input id="email" type="email" required><br>
+        </fieldset>
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="birthDate">Birth Date<em>*</em></label>
+            <input id="birthDate" type="date" required><br>
+
+            <label for="age">Age<em>*</em></label>
+            <input id="age" type="number" min="1" max="120" step="1" required><br>
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select><br>
+            <label for="comments">When did you first listen about Amdaris?<em>*</em></label>
+            <textarea id="comments" required></textarea>
+        </fieldset>
+        <fieldset>
+            <legend>Pick Your Favorite Technologies</legend>
+            <label for="C#"><input id="C#" type="checkbox"> C#</label>
+            <label for="Java"><input id="Java" type="checkbox"> Java</label>
+            <label for="Pyton"><input id="Pyton" type="checkbox"> Pyton</label>
+            <label for="HTML"><input id="HTML" type="checkbox"> HTML</label>
+            <label for="CSS"><input id="CSS" type="checkbox"> CSS</label>
+            <label for="JavaScript"><input id="JavaScript" type="checkbox"> JavaScript</label>
+            <label for="SQL"><input id="SQL" type="checkbox"> SQL</label>
+            <label for="PHP"><input id="PHP" type="checkbox"> PHP</label>
+        </fieldset>
+        <p><input type="submit" value="Submit Application"></p>
+    </form>
+</body>
+
+</html>

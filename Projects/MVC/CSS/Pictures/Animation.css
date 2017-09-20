@@ -1,0 +1,25 @@
+﻿body {
+  background: #ffffff;
+  overflow:hidden;
+}
+#animated {
+  position : absolute;
+  width : 100px;
+  height : 100px;
+  left:0px;
+  top:100px;
+  background: #ffcc00;
+ }
+@keyframes scroll {
+  to {
+    left:100%;
+    transform: rotate(180deg);
+  }
+}
+div {
+  animation-name: scroll;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
