@@ -117,6 +117,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -211,7 +212,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="AutoMapper\AutoMap.cs" />
+    <Compile Include="AutoMapDtoToModel\AutoMapDtoToModel.cs" />
+    <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -222,8 +224,12 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationManager.cs" />
+    <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\NhibernateProvider.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Windsor Utils\ControllersInstaller.cs" />
@@ -309,6 +315,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL.Interfaces\BLL.Interfaces.csproj">
+      <Project>{531c9f77-0b65-4c15-a33a-eb1dee78985a}</Project>
+      <Name>BLL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{3d1105d0-b8ba-457a-8a33-1c8518dffdea}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{6f17b80d-e96f-47a5-96aa-fc9d480f522d}</Project>
       <Name>Domain</Name>

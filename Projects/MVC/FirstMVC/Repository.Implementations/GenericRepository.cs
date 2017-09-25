@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Domain;
 using Repository.Interfaces;
-using Domain.Mapping;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Tool.hbm2ddl;
 using Domain.DomainUtils;
-using NHibernate.Transform;
 using Repository.Implementations.Paging;
 using NHibernate.Criterion;
 
@@ -20,16 +13,20 @@ namespace Repository.Implementations
 
     public class GenericRepository<T> : IRepository<T> where T : Entity
     {
-        protected readonly ISession _session = SessionGenerator.Instance.GetSession();
+        protected readonly ISession _session;// = SessionGenerator.Instance.GetSession();
 
+        public GenericRepository(ISession session)
+        {
+            _session = session;
+        }
         public IList<T> All => throw new NotImplementedException();
 
 
         #region Non-public members
-        public IPagedList<M> GetPaged<M>(IPageData page) where M :class
+        public IPagedList<M> GetPaged<M>(IPageData page) where M : class
         {
 
-            return GetPaged<M>(_session.QueryOver<M>() , page);  
+            return GetPaged<M>(_session.QueryOver<M>(), page);
         }
 
         protected IPagedList<TQuery> GetPaged<TQuery>(IQueryOver<TQuery> queryOver, IPageData page)
@@ -77,7 +74,7 @@ namespace Repository.Implementations
                 transaction.Commit();
             }
         }
-        public void Delete(T entity) 
+        public void Delete(T entity)
         {
             using (ITransaction transaction = _session.BeginTransaction())
             {
@@ -88,11 +85,11 @@ namespace Repository.Implementations
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();  
+                    transaction.Rollback();
                 }
             }
         }
-        public void Update<M>(T entity) where M:T
+        public void Update<M>(T entity) where M : T
         {
             using (ITransaction transaction = _session.BeginTransaction())
             {
@@ -100,60 +97,25 @@ namespace Repository.Implementations
                 t.Asign(entity);
                 //if (t.Id == entity.Id  )
                 //    _session.Evict(t);
-
-                _session.SaveOrUpdate(t);
-                transaction.Commit();
+                try
+                {
+                    _session.SaveOrUpdate(t);
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                }
             }
         }
         public T FindById(int Id)
         {
             return _session.Get<T>(Id);
         }
-        public T FindById<M>(int Id)where M :T
+        public T FindById<M>(int Id) where M : T
         {
             return (T)_session.Get<M>(Id);
         }
 
-        #region List   
-        //private List<T> _storage;
-        //public GenericRepository()
-        //{
-        //    _storage = new List<T>();
-        //}
-
-        //public IList<T> All
-        //{
-        //    get
-        //    {
-        //        return _storage;
-        //    }
-        //}
-        //public void Add(T entity)
-        //{
-        //    _storage.Add(entity);
-        //}
-        //public void Delete(T entity)
-        //{
-        //    _storage.Remove(entity);
-        //}
-        //public void Update(T entity)
-        //{
-        //    int index = _storage.FindIndex(x =>  x.GetType() == entity.GetType()  && x.Id == entity.Id);
-        //    if (index != -1)
-        //    {
-        //        _storage[index].Asign ( entity);
-        //    }
-        //}
-        //public T FindById(int Id)
-        //{
-        //    var result = _storage.FirstOrDefault(x => x.Id == Id);
-        //    return result;
-        //}
-        //public T FindById<M>(int Id)
-        //{
-        //    var result = _storage.FirstOrDefault(x =>x.GetType()==typeof(M)&&  x.Id == Id);
-        //    return result;
-        //}
-        #endregion
     }
 }

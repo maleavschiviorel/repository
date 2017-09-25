@@ -16,35 +16,33 @@ namespace Repository.Implementations
         }
 
 
-        public static SessionGenerator Instance
-        {
-            get { return _sessionGenerator; }
-        }
-
-
+        //public static SessionGenerator Instance
+        //{
+        //    get { return _sessionGenerator; }
+        //}
 
         #region Public members
 
-        public ISession GetSession()
+        public static ISession GetSession(ISessionFactory sessionFactory)
         {
             if (constr == null)
             {
                 constr = WebConfigurationManager.ConnectionStrings["NHibernate"].ConnectionString;
                // CreateConfiguration();
             }
-            return SessionFactory.OpenSession();
+            return sessionFactory.OpenSession(); //SessionFactory.OpenSession();
         }
 
         #endregion
 
         #region Non-public static members
 
-        static private string constr = ConfigurationManager.ConnectionStrings["NHibernate"].ConnectionString;// WebConfigurationManager.ConnectionStrings["NHibernate"].ConnectionString;
+        static private string constr = ConfigurationManager.ConnectionStrings["NHibernate"].ConnectionString;
 
-        private static readonly SessionGenerator _sessionGenerator = new SessionGenerator();
-        private static readonly ISessionFactory SessionFactory = CreateSessionFactory();
+        //private static readonly SessionGenerator _sessionGenerator = new SessionGenerator();
+        //private static readonly ISessionFactory SessionFactory = CreateSessionFactory();
        
-        private static ISessionFactory CreateSessionFactory()
+        public static ISessionFactory CreateSessionFactory()
         {
             return Fluently.Configure().
                 Database(MsSqlConfiguration.MsSql2012.ConnectionString(constr)).

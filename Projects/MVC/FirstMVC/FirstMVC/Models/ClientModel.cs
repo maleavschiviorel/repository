@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DTO
+namespace FirstMVC.Model
 {
-  public  class ClientDto: PersonDto
+  public  class ClientModel: PersonModel
     {
         public virtual string TypeOfClient { get; set; }
     }

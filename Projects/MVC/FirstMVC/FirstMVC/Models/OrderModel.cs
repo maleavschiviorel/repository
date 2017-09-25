@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DTO
+namespace FirstMVC.Model
 {
-   public class OrderDto
+   public class OrderModel
     {
         public virtual int Id { get; set; }
         public virtual string Material { get; set; }
         public virtual decimal Quantity { get; set; }
         public virtual decimal UnitPrice { get; set; }
-        public virtual ClientDto Client { get; set; }
+        public virtual ClientModel Client { get; set; }
 
         public virtual int ClientId { get; set; }
-        public virtual IList<ClientDto> Clients { get; set; }
+        public virtual IList<ClientModel> AllClients { get; set; }
     }
 }

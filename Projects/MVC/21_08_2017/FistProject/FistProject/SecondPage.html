@@ -3,14 +3,39 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <script src="JS/jquery-3.2.1.js"></script>
+    <script>var q = 0; </script>
 </head>
 <body>
+
+    <script>
+        $(document).ready(function () {
+            $("img").click(function () {
+
+                if (q == 0) {
+                    $(this).css('border-style', 'solid')
+                    $('img').animate({ left: '100px', opacity: '0.5' })
+                    q++;
+                }
+                else {
+                    $(this).css('border-style', 'none');
+                    $('img').animate({ left: '0px', opacity: '1' })
+                    q--;
+                }
+
+            });
+            $('img').mousedown(function () {
+                alert('qq');
+
+            });
+        });
+    </script>
     <div style="position: absolute; width: 1000px; height: 700px;">
         <h3>Second Page</h3>
-        <hr/>
-        
-        <img src ="http://www.bing.com/az/hprichbg/rb/SchafstelzeHessen_ROW10447263069_1920x1080.jpg"/>
-        
+        <hr />
+
+        <img id="qq" src="http://www.bing.com/az/hprichbg/rb/SchafstelzeHessen_ROW10447263069_1920x1080.jpg" />
+
         <div style="position: absolute;width: 900px; height: 20px; top:600px  ;">
             <a style="float: right;" href="ThirdPage.html"><i>Next Page</i></a>
             <a style="float: left;" href="FirstPage.html"><i>Privious Page</i></a>

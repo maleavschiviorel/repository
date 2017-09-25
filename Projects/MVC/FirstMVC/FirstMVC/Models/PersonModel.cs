@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DTO
+namespace FirstMVC.Model
 {
-   public class PersonDto
+   public class PersonModel
     {
         public virtual int Id { get; set; }
         public virtual string FirstName { get; set; }

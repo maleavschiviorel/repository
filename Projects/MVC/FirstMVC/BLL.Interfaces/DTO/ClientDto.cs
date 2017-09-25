@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DTO
+namespace BLL.DTO
 {
-    class SupplierDto:PersonDto 
+  public  class ClientDto: PersonDto
     {
-        public virtual string Brend { get; set; }
+        public virtual string TypeOfClient { get; set; }
     }
 }

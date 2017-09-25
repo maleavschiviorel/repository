@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\Style.css" />
+    <Content Include="JS\jquery-3.2.1.js" />
     <Content Include="JS\JScript.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
